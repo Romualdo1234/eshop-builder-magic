@@ -28,7 +28,7 @@ export const Route = createFileRoute("/produkt/$slug")({
 function ProductPage() {
   const { slug } = Route.useLoaderData();
   const p = getProduct(slug)!;
-  const [vid, setVid] = useState(p.variants.find((v) => v.stock > 0)?.id ?? p.variants[0].id);
+  const [vid, setVid] = useState(p.variants.find((v) => v.stock > 0)?.id ?? p.variants[0]!.id);
   const [qty, setQty] = useState(1);
   const v = p.variants.find((x) => x.id === vid)!;
   const { add } = useCart();

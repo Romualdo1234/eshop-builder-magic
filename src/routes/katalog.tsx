@@ -3,10 +3,10 @@ import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { PRODUCTS, WATERS, minPrice, totalStock } from "@/lib/shop";
 
-type Search = { kategorie?: string; znacka?: string; voda?: string; skladem?: boolean; razeni?: string };
+type Search = { kategorie?: string | undefined; znacka?: string | undefined; voda?: string | undefined; skladem?: boolean | undefined; razeni?: string | undefined };
 
 export const Route = createFileRoute("/katalog")({
-  validateSearch: (s: Record<string, unknown>): Search => ({
+  validateSearch: (s: { kategorie?: unknown; znacka?: unknown; voda?: unknown; skladem?: unknown; razeni?: unknown }): Search => ({
     kategorie: typeof s.kategorie === "string" ? s.kategorie : undefined,
     znacka: typeof s.znacka === "string" ? s.znacka : undefined,
     voda: typeof s.voda === "string" ? s.voda : undefined,
