@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KatalogRouteImport } from './routes/katalog'
+import { Route as KosikRouteImport } from './routes/kosik'
+import { Route as PokladnaRouteImport } from './routes/pokladna'
+import { Route as ProdejnaRouteImport } from './routes/prodejna'
+import { Route as ProduktSlugRouteImport } from './routes/produkt.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KatalogRoute = KatalogRouteImport.update({
+  id: '/katalog',
+  path: '/katalog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KosikRoute = KosikRouteImport.update({
+  id: '/kosik',
+  path: '/kosik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PokladnaRoute = PokladnaRouteImport.update({
+  id: '/pokladna',
+  path: '/pokladna',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProdejnaRoute = ProdejnaRouteImport.update({
+  id: '/prodejna',
+  path: '/prodejna',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProduktSlugRoute = ProduktSlugRouteImport.update({
+  id: '/produkt/$slug',
+  path: '/produkt/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/katalog': typeof KatalogRoute
+  '/kosik': typeof KosikRoute
+  '/pokladna': typeof PokladnaRoute
+  '/prodejna': typeof ProdejnaRoute
+  '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/katalog': typeof KatalogRoute
+  '/kosik': typeof KosikRoute
+  '/pokladna': typeof PokladnaRoute
+  '/prodejna': typeof ProdejnaRoute
+  '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/katalog': typeof KatalogRoute
+  '/kosik': typeof KosikRoute
+  '/pokladna': typeof PokladnaRoute
+  '/prodejna': typeof ProdejnaRoute
+  '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/katalog' | '/kosik' | '/pokladna' | '/prodejna' | '/produkt/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/katalog' | '/kosik' | '/pokladna' | '/prodejna' | '/produkt/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/katalog'
+    | '/kosik'
+    | '/pokladna'
+    | '/prodejna'
+    | '/produkt/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KatalogRoute: typeof KatalogRoute
+  KosikRoute: typeof KosikRoute
+  PokladnaRoute: typeof PokladnaRoute
+  ProdejnaRoute: typeof ProdejnaRoute
+  ProduktSlugRoute: typeof ProduktSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/katalog': {
+      id: '/katalog'
+      path: '/katalog'
+      fullPath: '/katalog'
+      preLoaderRoute: typeof KatalogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kosik': {
+      id: '/kosik'
+      path: '/kosik'
+      fullPath: '/kosik'
+      preLoaderRoute: typeof KosikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pokladna': {
+      id: '/pokladna'
+      path: '/pokladna'
+      fullPath: '/pokladna'
+      preLoaderRoute: typeof PokladnaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prodejna': {
+      id: '/prodejna'
+      path: '/prodejna'
+      fullPath: '/prodejna'
+      preLoaderRoute: typeof ProdejnaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produkt/$slug': {
+      id: '/produkt/$slug'
+      path: '/produkt/$slug'
+      fullPath: '/produkt/$slug'
+      preLoaderRoute: typeof ProduktSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KatalogRoute: KatalogRoute,
+  KosikRoute: KosikRoute,
+  PokladnaRoute: PokladnaRoute,
+  ProdejnaRoute: ProdejnaRoute,
+  ProduktSlugRoute: ProduktSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
