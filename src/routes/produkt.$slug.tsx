@@ -114,8 +114,8 @@ function ProductPage() {
           </div>
         </div>
         {(p.story || specs.length > 0 || p.faq) && (
-          <section className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
-            <div>
+          <section className={`mt-14 grid gap-10 ${p.story || p.faq ? "lg:grid-cols-[1fr_1.2fr]" : "max-w-3xl"}`}>
+            {(p.story || p.faq) && <div>
               {p.story && (
                 <>
                   <h2 className="font-display text-3xl mb-4">Jak to funguje u vody</h2>
@@ -135,7 +135,7 @@ function ProductPage() {
                   </Accordion>
                 </div>
               )}
-            </div>
+            </div>}
             <div>
               <h2 className="font-display text-3xl mb-4">Parametry</h2>
               <dl className="rounded-xl border bg-card divide-y">
