@@ -18,6 +18,13 @@ export type Product = {
   notFor: string;
   usage: string;
   match?: string;
+  /** slug produktu, který garantovaně sedí k tomuto (AS-Match) */
+  matchSlug?: string;
+  /** kurátorský text střední délky: jak produkt funguje v praxi */
+  story?: string[];
+  /** technická data: parametr, hodnota, praktický význam */
+  specs?: { label: string; value: string; meaning?: string }[];
+  faq?: { q: string; a: string }[];
   water: string[];
 };
 
@@ -80,7 +87,7 @@ export const PRODUCTS: Product[] = [
     ],
     forWho: "Hody na 80–120 m na přehradách a pískovnách.",
     notFor: "Lov z lodě na malých vodách.",
-    usage: "Olovo 90–140 g.", match: "Naviják Big Pit 5000 + vlasec 0,31 mm", water: ["Přehrada", "Řeka"],
+    usage: "Olovo 90–140 g.", match: "Naviják Big Pit 5000 + vlasec 0,31 mm", matchSlug: "big-pit-5000", water: ["Přehrada", "Řeka"],
   },
   {
     slug: "big-pit-5000", name: "Naviják Big Pit 5000 QD", brand: "Mivardi", category: "Navijáky", image: rod,
@@ -91,7 +98,26 @@ export const PRODUCTS: Product[] = [
     ],
     forWho: "Vyvážení k prutům 3,60 m / 3–3,5 lb.",
     notFor: "Feederové a plavané lovy.",
-    usage: "Návin 300 m / 0,35 mm.", match: "Prut Carp Special 3,60 m", water: ["Přehrada", "Řeka"],
+    usage: "Návin 300 m / 0,35 mm.", match: "Prut Carp Special 3,60 m", matchSlug: "carp-special-380", water: ["Přehrada", "Řeka"],
+    // Texty a parametry převzaté z návrhu produktové karty. Před ostrým provozem je ověřit podle datového listu výrobce.
+    story: [
+      "Naviják pro kapraře, kteří chtějí odhozový potenciál velkých kaprových speciálů, ale nechtějí zbytečně zatěžovat prut masivním tělem klasických velkokapacitních modelů. Těsný chod převodů pomáhá při stahování těžkých olov z hloubky.",
+      "Široká cívka s kónicky zkosenou hranou snižuje tření vlasce při náhozu. Rychlá přední brzda Quick Drag (QD) umožní přejít z uvolněné cívky do kontrolované brzdy během půl otáčky matice, což se hodí hned po záseku, když ryba míří k překážkám.",
+    ],
+    specs: [
+      { label: "Velikost", value: "5000", meaning: "Vyvážení s děleným prutem 3,00–3,60 m." },
+      { label: "Kapacita cívky", value: "0,30 mm / 410 m · 0,35 mm / 300 m · 0,40 mm / 230 m", meaning: "Univerzální profil pro daleký nához i střední vyvážku." },
+      { label: "Převodový poměr", value: "4,6 : 1", meaning: "Silový převod, šetří ozubení při tahu." },
+      { label: "Návin na otáčku", value: "92 cm", meaning: "Rychlé stažení sestavy ze vzdálenosti přes 100 m." },
+      { label: "Hmotnost", value: "485 g", meaning: "Nižší setrvačnost a menší únava při opakovaném nahazování." },
+      { label: "Ložiska", value: "6 kuličkových + 1 jednocestné válečkové", meaning: "Plynulý chod a okamžitá uzávěrka zpětného chodu." },
+      { label: "Přední brzda", value: "Karbon-teflonová Quick Drag (QD)", meaning: "Regulace brzdy v rozsahu půl otáčky." },
+      { label: "Maximální brzdná síla", value: "12 kg", meaning: "Rezerva pro zastavení úniku ryby k vázkám." },
+    ],
+    faq: [
+      { q: "Obsahuje balení náhradní cívku?", a: "Základní balení zahrnuje jednu kovovou cívku s odhozovým profilem. Hlubší cívku s větší kapacitou lze doobjednat mezi kompatibilním příslušenstvím." },
+      { q: "Jak zvolit mezi velikostmi 5000 a 6000?", a: "Obě velikosti mají stejné tělo i převody. Velikost 6000 má hlubší cívku s kapacitou 420 m vlasce 0,35 mm a hodí se na zavážení nástrah člunem na rozlehlých vodách." },
+    ],
   },
   {
     slug: "method-feeder-set", name: "Method feeder krmítka – sada 3 ks", brand: "Jet Fish", category: "Feeder", image: feeder,

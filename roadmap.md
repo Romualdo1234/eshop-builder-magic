@@ -14,7 +14,8 @@ Vychází ze strategického auditu as-fish.cz. Rozpočty, cílové hodnoty KPI a
 Hotovo:
 - [x] Web na Vercelu (TanStack Start), responzivní, modrý design podle loga prodejny.
 - [x] Úvodní stránka (hero, rozcestník „Kam dnes míříte?“, 6 doporučených produktů, prodejna, recenze).
-- [x] Katalog s filtry, detail produktu s variantami a skladem na prodejně, košík, pokladna (ukázková).
+- [x] Katalog s filtry, košík, pokladna (ukázková).
+- [x] Detail produktu ve třech vrstvách: verdikt nad ohybem, text „Jak to funguje u vody“, tabulka parametrů a časté otázky (zatím plně vyplněný jen naviják Big Pit 5000; ostatní produkty mají základní parametry). Přidána strukturovaná data Product.
 - [x] Doprava: osobní odběr, Z-Box, Balíkovna, PPL; platby: karta, převod, dobírka.
 
 Chybí pro ostrý provoz:

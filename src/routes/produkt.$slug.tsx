@@ -4,7 +4,24 @@ import { toast } from "sonner";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/lib/cart";
-import { PRODUCTS, formatCZK, getProduct } from "@/lib/shop";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { PRODUCTS, formatCZK, getProduct, minPrice, totalStock, type Product } from "@/lib/shop";
+
+function jsonLd(p: Product) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.name,
+    brand: { "@type": "Brand", name: p.brand },
+    category: p.category,
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "CZK",
+      lowPrice: minPrice(p),
+      availability: totalStock(p) > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+    },
+  });
+}
 
 export const Route = createFileRoute("/produkt/$slug")({
   loader: ({ params }) => {
@@ -23,6 +40,7 @@ export const Route = createFileRoute("/produkt/$slug")({
           { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Produkt nenalezen | AS-FISH" }, { name: "robots", content: "noindex" }],
+    scripts: loaderData ? [{ type: "application/ld+json", children: jsonLd(getProduct(loaderData.slug)!) }] : [],
   }),
   component: ProductPage,
 });
@@ -34,7 +52,17 @@ function ProductPage() {
   const [qty, setQty] = useState(1);
   const v = p.variants.find((x) => x.id === vid)!;
   const { add } = useCart();
-  const related = PRODUCTS.filter((x) => x.slug !== p.slug && x.water.some((w) => p.water.includes(w))).slice(0, 4);
+  const matched = p.matchSlug ? getProduct(p.matchSlug) : undefined;
+  const related = [
+    ...(matched ? [matched] : []),
+    ...PRODUCTS.filter((x) => x.slug !== p.slug && x.slug !== matched?.slug && x.water.some((w) => p.water.includes(w))),
+  ].slice(0, 4);
+  const specs = p.specs ?? [
+    { label: "Značka", value: p.brand },
+    { label: "Kategorie", value: p.category },
+    { label: p.variantName, value: p.variants.map((x) => x.label).join(" · ") },
+    { label: "Vhodné vody", value: p.water.join(", ") },
+  ];
 
   return (
     <Layout>
@@ -79,13 +107,51 @@ function ProductPage() {
               <p><b>Pro koho je:</b> {p.forWho}</p>
               <p><b>Pro koho není:</b> {p.notFor}</p>
               <p><b>Doporučené použití:</b> {p.usage}</p>
-              {p.match && <p className="text-accent"><b>AS-Match:</b> {p.match}</p>}
+              {p.match && (
+                <p className="text-accent"><b>AS-Match:</b> {matched ? <Link to="/produkt/$slug" params={{ slug: matched.slug }} className="underline underline-offset-4">{p.match}</Link> : p.match}</p>
+              )}
             </div>
           </div>
         </div>
+        {(p.story || specs.length > 0 || p.faq) && (
+          <section className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+            <div>
+              {p.story && (
+                <>
+                  <h2 className="font-display text-3xl mb-4">Jak to funguje u vody</h2>
+                  <div className="space-y-4 text-muted-foreground leading-relaxed">{p.story.map((t) => <p key={t.slice(0, 20)}>{t}</p>)}</div>
+                </>
+              )}
+              {p.faq && (
+                <div className={p.story ? "mt-10" : ""}>
+                  <h2 className="font-display text-3xl mb-2">Časté otázky</h2>
+                  <Accordion type="single" collapsible>
+                    {p.faq.map((f, i) => (
+                      <AccordionItem key={f.q} value={`f${i}`}>
+                        <AccordionTrigger className="text-left">{f.q}</AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              )}
+            </div>
+            <div>
+              <h2 className="font-display text-3xl mb-4">Parametry</h2>
+              <dl className="rounded-xl border bg-card divide-y">
+                {specs.map((s) => (
+                  <div key={s.label} className="grid sm:grid-cols-[11rem_1fr] gap-1 sm:gap-4 px-4 py-3 text-sm">
+                    <dt className="text-muted-foreground">{s.label}</dt>
+                    <dd><span className="font-semibold">{s.value}</span>{"meaning" in s && s.meaning && <span className="block text-muted-foreground mt-0.5">{s.meaning}</span>}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </section>
+        )}
         {related.length > 0 && (
           <section className="mt-16">
-            <h2 className="font-display text-3xl mb-4">Sedí k tomu</h2>
+            <h2 className="font-display text-3xl mb-4">{matched ? "Sedí k tomu (AS-Match)" : "Sedí k tomu"}</h2>
             <div className="grid gap-4 grid-cols-2 md:grid-cols-4">{related.map((r) => <ProductCard key={r.slug} p={r} />)}</div>
           </section>
         )}
