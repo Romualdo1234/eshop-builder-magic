@@ -4,7 +4,7 @@
 - [x] Zpracovat roadmapu z dodaného strategického auditu.
 - [x] Použít dodaná loga a odvodit vzhled z modré identity prodejny.
 - [x] Nahradit reklamní lištu a přepracovat navigaci i úvodní nadpis.
-- [ ] Ověřit zobrazení a odkazy po úpravách.
+- [x] Ověřit zobrazení a odkazy po úpravách.
 
 ## Další rozvoj — pouze návrh, není součástí aktuální realizace
 Časové horizonty jsou převzaté z auditu, nikoli závazný harmonogram. Současný obchod je ukázkové MVP, nikoli ostrý prodejní systém. Audit doporučuje Upgates; tato roadmapa neprovádí změnu platformy.
