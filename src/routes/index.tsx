@@ -3,6 +3,8 @@ import hero from "@/assets/hero.jpg";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
 import { PRODUCTS, WATERS } from "@/lib/shop";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -11,6 +13,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Kaprařina a method feeder od rybářů z Ostravy. Doprava zdarma od 1 499 Kč, Z-Box od 69 Kč." },
       { property: "og:title", content: "AS-FISH – rybářské potřeby z Ostravy" },
       { property: "og:description", content: "Nekupujte zbytečnosti. Vyrazte k vodě s vybavením, které funguje." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
@@ -25,16 +29,16 @@ const REVIEWS = [
 function Home() {
   return (
     <Layout>
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden text-hero-foreground">
         <img src={hero} alt="Kaprové pruty u jezera za úsvitu" width={1600} height={912} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="relative mx-auto max-w-6xl px-4 py-28 md:py-40">
-          <p className="text-accent font-semibold tracking-widest text-sm uppercase mb-4">Rybáři z Ostravy</p>
-          <h1 className="font-display text-5xl md:text-7xl leading-none max-w-3xl">Nekupujte zbytečnosti. Vyrazte k vodě s vybavením, které funguje.</h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground">Testujeme výbavu přímo na revírech a ručíme za kompatibilitu každé sestavy.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/katalog" className="rounded-md bg-accent text-accent-foreground px-6 py-3 font-bold">Procházet katalog</Link>
-            <Link to="/prodejna" className="rounded-md border border-foreground/30 px-6 py-3 font-semibold">Prodejna Ostrava</Link>
+        <div className="absolute inset-0 bg-hero-overlay" />
+        <div className="relative mx-auto max-w-6xl px-4 py-12 md:py-14">
+          <p className="font-semibold text-sm uppercase mb-4">AS-FISH / Ostrava</p>
+          <h1 className="font-display font-bold text-4xl md:text-6xl leading-tight max-w-2xl">Rybářské potřeby.<br />Od rybářů pro rybáře.</h1>
+          <p className="mt-5 max-w-lg text-base sm:text-lg text-hero-muted">Vybavení, které sami bereme k vodě.<br />Kaprařina a method feeder se zázemím v Ostravě.</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Button asChild size="lg" className="h-12 shadow-none"><Link to="/katalog">Procházet katalog<ArrowRight /></Link></Button>
+            <Button asChild size="lg" variant="outline" className="h-12 bg-transparent text-hero-foreground border-hero-foreground/40 hover:bg-hero-foreground/10 hover:text-hero-foreground"><Link to="/prodejna">Naše prodejna</Link></Button>
           </div>
         </div>
       </section>
