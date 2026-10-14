@@ -89,6 +89,10 @@ function Checkout() {
             <div className="flex justify-between"><span>Doprava</span><span>{shipCost ? formatCZK(shipCost) : "Zdarma"}</span></div>
             {payCost > 0 && <div className="flex justify-between"><span>Dobírka</span><span>{formatCZK(payCost)}</span></div>}
             <div className="flex justify-between border-t pt-3 text-xl font-bold"><span>Celkem</span><span>{formatCZK(total)}</span></div>
+            <label className="flex items-start gap-2 pt-2 text-xs text-muted-foreground cursor-pointer">
+              <input type="checkbox" required className="mt-0.5" />
+              <span>Souhlasím s <Link to="/obchodni-podminky" target="_blank" className="text-accent underline">obchodními podmínkami</Link>.</span>
+            </label>
             <button type="submit" className="w-full mt-3 rounded-md bg-accent text-accent-foreground py-3 font-bold">Objednat a zaplatit</button>
             <p className="text-xs text-muted-foreground">Ukázková pokladna – platba zatím neprobíhá.</p>
           </div>

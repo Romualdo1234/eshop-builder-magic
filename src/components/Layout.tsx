@@ -72,6 +72,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <li><Link to="/katalog" className="hover:text-accent transition-colors">Katalog</Link></li>
               <li><Link to="/kosik" className="hover:text-accent transition-colors">Košík</Link></li>
               <li><Link to="/prodejna" className="hover:text-accent transition-colors">Prodejna a kontakt</Link></li>
+              <li><Link to="/obchodni-podminky" className="hover:text-accent transition-colors">Obchodní podmínky</Link></li>
             </ul>
           </div>
           <div>
@@ -80,7 +81,10 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
         </div>
         <div className="border-t border-brand-border">
-          <div className="mx-auto max-w-6xl px-4 py-4 text-xs">© {new Date().getFullYear()} AS-FISH · Ostrava</div>
+          <div className="mx-auto max-w-6xl px-4 py-4 text-xs flex flex-wrap gap-x-4 gap-y-1 justify-between">
+            <span>© {new Date().getFullYear()} AS-FISH · Ostrava</span>
+            <Link to="/obchodni-podminky" className="hover:text-accent transition-colors">Obchodní podmínky</Link>
+          </div>
         </div>
       </footer>
     </div>

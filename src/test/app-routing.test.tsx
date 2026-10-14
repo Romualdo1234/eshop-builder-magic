@@ -15,3 +15,10 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 });
+
+describe("Obchodní podmínky", () => {
+  it("has its own page", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes("/obchodni-podminky").at(-1)?.routeId).toBe("/obchodni-podminky");
+  });
+});
