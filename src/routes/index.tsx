@@ -32,9 +32,9 @@ function Home() {
       <section className="relative overflow-hidden text-hero-foreground">
         <img src={hero} alt="Kaprové pruty u jezera za úsvitu" width={1600} height={912} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="relative mx-auto max-w-6xl px-4 py-12 md:py-14">
+        <div className="relative mx-auto max-w-6xl px-4 py-10">
           <p className="font-semibold text-sm uppercase mb-4">AS-FISH / Ostrava</p>
-          <h1 className="font-display font-bold text-4xl md:text-6xl leading-tight max-w-2xl">Rybářské potřeby.<br />Od rybářů pro rybáře.</h1>
+          <h1 className="font-display font-bold text-4xl md:text-5xl leading-tight max-w-2xl">Rybářské potřeby.<br />Od rybářů pro rybáře.</h1>
           <p className="mt-5 max-w-lg text-base sm:text-lg text-hero-muted">Vybavení, které sami bereme k vodě.<br />Kaprařina a method feeder se zázemím v Ostravě.</p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button asChild size="lg" className="h-12 shadow-none"><Link to="/katalog">Procházet katalog<ArrowRight /></Link></Button>
@@ -43,7 +43,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="mx-auto max-w-6xl px-4 py-10">
         <h2 className="font-display text-4xl mb-6">Kam dnes míříte?</h2>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
           {WATERS.map((w) => (
