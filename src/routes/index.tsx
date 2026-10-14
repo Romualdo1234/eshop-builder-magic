@@ -42,8 +42,7 @@ function Home() {
         <img src={hero} alt="Kaprové pruty u jezera za úsvitu" width={1600} height={912} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.12_0.04_250/90%)] via-[oklch(0.12_0.04_250/65%)] to-[oklch(0.12_0.04_250/20%)]" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
-        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-28 lg:py-32">
-          <p className="inline-flex items-center rounded-full border border-hero-foreground/25 bg-hero-foreground/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] mb-6 backdrop-blur-sm">AS-FISH / Ostrava</p>
+        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-32 lg:py-36">
           <h1 className="font-display font-bold text-4xl sm:text-6xl leading-[1.05] tracking-tight max-w-2xl">Rybářské potřeby.<br /><span className="text-accent">Od rybářů pro rybáře.</span></h1>
           <p className="mt-6 max-w-lg text-base sm:text-lg text-hero-muted leading-relaxed">Vybavení, které sami bereme k vodě. Kaprařina a method feeder se zázemím v Ostravě.</p>
           <div className="mt-8 flex flex-wrap gap-3">

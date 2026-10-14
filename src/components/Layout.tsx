@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { MapPin, ShoppingBag, Clock } from "lucide-react";
+import { MapPin, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
 
@@ -18,13 +18,6 @@ export function Layout({ children }: { children: ReactNode }) {
   const { count } = useCart();
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="bg-primary text-primary-foreground text-xs sm:text-sm">
-        <div className="mx-auto max-w-6xl px-4 py-2 flex items-center justify-center sm:justify-between gap-4">
-          <span className="inline-flex items-center gap-2 font-medium"><MapPin className="size-4" />Prodejna Ostrava, Nádražní · Po–Pá 9–17</span>
-          <span className="hidden sm:inline-flex items-center gap-2"><Clock className="size-4" />Objednávky do 14:00 expedujeme ještě dnes</span>
-        </div>
-      </div>
-
       <header className="sticky top-0 z-30 border-b border-brand-border bg-brand-surface/95 backdrop-blur text-brand-ink">
         <div className="mx-auto max-w-6xl px-4 h-16 sm:h-20 flex items-center gap-4 sm:gap-8">
           <Link to="/" aria-label="AS-FISH – úvodní stránka" className="flex items-center gap-3 shrink-0">
