@@ -8,6 +8,8 @@ export const Route = createFileRoute("/prodejna")({
       { name: "description", content: "Kamenná prodejna rybářských potřeb na Nádražní v Ostravě. Otevírací doba, kontakt, nonstop box." },
       { property: "og:title", content: "Prodejna Ostrava – AS-FISH" },
       { property: "og:description", content: "Osobní odběr zdarma a nonstop výdejní box." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Store,

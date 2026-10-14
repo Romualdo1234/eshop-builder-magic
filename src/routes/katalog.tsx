@@ -19,6 +19,8 @@ export const Route = createFileRoute("/katalog")({
       { name: "description", content: "Boilies, pruty, navijáky a method feeder s filtry podle značky, revíru a skladovosti." },
       { property: "og:title", content: "Katalog – AS-FISH" },
       { property: "og:description", content: "Filtrujte napříč značkami podle revíru a dostupnosti." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Catalog,
