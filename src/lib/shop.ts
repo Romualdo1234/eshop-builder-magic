@@ -19,8 +19,6 @@ export type Product = {
   category: Category;
   /** fotka produktu; dokud chybí, zobrazí se značková dlaždice */
   image?: string;
-  /** interní hodnocení prodejny, jen u produktů, které prodejna výslovně doporučuje */
-  score?: number;
   rating?: number;
   reviews?: number;
   variantName: string;
@@ -69,7 +67,7 @@ const v = (id: string, label: string, price: number, stock: number): Variant => 
 export const PRODUCTS: Product[] = [
   {
     slug: "mikbaits-big-boilies", name: "Krmné boilies BiG Halibut-Oliheň", brand: "Mikbaits", category: "Boilies",
-    score: 9.2, rating: 4.9, reviews: 128, variantName: "Průměr / balení",
+    rating: 4.9, reviews: 128, variantName: "Průměr / balení",
     variants: [
       { id: "16-1", label: "16 mm · 1 kg", price: 289, stock: 14 },
       { id: "20-1", label: "20 mm · 1 kg", price: 289, stock: 9 },
@@ -82,7 +80,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "nikl-krill-boilies", name: "Boilies Krill & Spice", brand: "Nikl", category: "Boilies",
-    score: 8.9, rating: 4.8, reviews: 76, variantName: "Průměr / balení",
+    rating: 4.8, reviews: 76, variantName: "Průměr / balení",
     variants: [
       { id: "18-1", label: "18 mm · 1 kg", price: 319, stock: 11 },
       { id: "24-3", label: "24 mm · 3 kg", price: 849, stock: 6 },
@@ -93,7 +91,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "carp-special-380", name: "Kaprový prut Carp Special 3,60 m", brand: "Mivardi", category: "Pruty",
-    score: 8.8, rating: 4.7, reviews: 42, variantName: "Testová křivka",
+    rating: 4.7, reviews: 42, variantName: "Testová křivka",
     variants: [
       { id: "3", label: "3,00 lb", price: 1890, stock: 5 },
       { id: "35", label: "3,50 lb", price: 1990, stock: 3 },
@@ -104,7 +102,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "big-pit-5000", name: "Naviják Big Pit 5000 QD", brand: "Mivardi", category: "Navijáky",
-    score: 9.0, rating: 4.8, reviews: 58, variantName: "Velikost",
+    rating: 4.8, reviews: 58, variantName: "Velikost",
     variants: [
       { id: "5000", label: "5000", price: 2290, stock: 7 },
       { id: "6000", label: "6000", price: 2490, stock: 2 },
@@ -134,7 +132,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "method-feeder-set", name: "Method feeder krmítka – sada 3 ks", brand: "Jet Fish", category: "Feeder",
-    score: 8.7, rating: 4.6, reviews: 93, variantName: "Gramáž",
+    rating: 4.6, reviews: 93, variantName: "Gramáž",
     variants: [
       { id: "20", label: "20 g", price: 149, stock: 22 },
       { id: "30", label: "30 g", price: 149, stock: 18 },
@@ -146,7 +144,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "method-pellets-2mm", name: "Mikropelety Method 2 mm", brand: "CC Moore", category: "Feeder",
-    score: 8.6, rating: 4.7, reviews: 61, variantName: "Příchuť",
+    rating: 4.7, reviews: 61, variantName: "Příchuť",
     variants: [
       { id: "halibut", label: "Halibut", price: 129, stock: 30 },
       { id: "jahoda", label: "Jahoda", price: 129, stock: 12 },
@@ -158,7 +156,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "fluoro-shock", name: "Šokový fluorocarbon 0,50 mm", brand: "LK Baits", category: "Vlasce",
-    score: 9.1, rating: 4.9, reviews: 37, variantName: "Návin",
+    rating: 4.9, reviews: 37, variantName: "Návin",
     variants: [
       { id: "50", label: "50 m", price: 359, stock: 9 },
       { id: "100", label: "100 m", price: 629, stock: 4 },
@@ -169,7 +167,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "hooks-wide-gape", name: "Háčky Wide Gape Teflon", brand: "Mivardi", category: "Bižuterie",
-    score: 8.5, rating: 4.6, reviews: 104, variantName: "Velikost",
+    rating: 4.6, reviews: 104, variantName: "Velikost",
     variants: [
       { id: "4", label: "Vel. 4", price: 119, stock: 25 },
       { id: "6", label: "Vel. 6", price: 119, stock: 19 },

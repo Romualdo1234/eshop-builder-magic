@@ -74,9 +74,6 @@ function ProductPage() {
           <div>
             <div className="text-sm uppercase tracking-wider text-muted-foreground">{p.brand} · SKU {p.slug.toUpperCase().slice(0, 10)}-{v.id}</div>
             <h1 className="font-display text-4xl md:text-5xl mt-1">{p.name}</h1>
-            <div className="mt-2 flex gap-3 text-sm empty:hidden">
-              {p.score !== undefined && <span className="rounded bg-accent text-accent-foreground font-bold px-2">AS-SCORE {p.score}/10</span>}
-            </div>
             <div className="mt-6 text-4xl font-bold">{formatCZK(v.price)}</div>
             <div className={`mt-2 text-sm font-semibold ${v.stock > 0 ? "text-success" : "text-muted-foreground"}`}>
               {v.stock > 0 ? `● Skladem v Ostravě: ${v.stock} ks · Expedujeme dnes do 14:00 · Odběr dnes do 17:00` : "○ Momentálně vyprodáno – naskladníme do 5 dnů"}

@@ -43,7 +43,7 @@ function Catalog() {
     (!s.kategorie || p.category === s.kategorie) && (!s.znacka || p.brand === s.znacka) &&
     (!s.voda || p.water.includes(s.voda)) && (!s.skladem || totalStock(p) > 0));
   if (s.razeni === "cena") list = [...list].sort((a, b) => minPrice(a) - minPrice(b));
-  else list = [...list].sort((a, b) => (b.score ?? 0) - (a.score ?? 0) || a.name.localeCompare(b.name, "cs"));
+  else list = [...list].sort((a, b) => a.name.localeCompare(b.name, "cs"));
 
   const group = (label: string, key: keyof Search, values: string[]) => (
     <div>

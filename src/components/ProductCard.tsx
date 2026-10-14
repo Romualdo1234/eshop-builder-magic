@@ -8,7 +8,6 @@ export function ProductCard({ p }: { p: Product }) {
     <Link to="/produkt/$slug" params={{ slug: p.slug }} className="group rounded-xl border bg-card overflow-hidden flex flex-col hover:border-accent hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all">
       <div className="relative aspect-square overflow-hidden">
         <ProductImage p={p} className="h-full w-full group-hover:scale-105 transition-transform duration-500" />
-        {p.score !== undefined && <span className="absolute top-2 left-2 rounded-full bg-accent text-accent-foreground text-xs font-bold px-2.5 py-1 shadow">AS-SCORE {p.score}</span>}
       </div>
       <div className="p-4 flex flex-col gap-1 flex-1">
         <div className="text-xs uppercase tracking-wider text-muted-foreground">{p.brand} · {p.category}</div>
