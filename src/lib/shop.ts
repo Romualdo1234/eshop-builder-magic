@@ -224,6 +224,50 @@ export const PRODUCTS: Product[] = [
   }) as Product),
 ];
 
+/** Cena za metr – jen u kategorie Vlasce, kde je návin v názvu varianty (např. „50 m“). */
+export function pricePerMeter(p: Product, variant: Variant): number | undefined {
+  if (p.category !== "Vlasce") return undefined;
+  const m = /(\d+)\s*m$/.exec(variant.label.trim());
+  const meters = m ? Number(m[1]) : 0;
+  return meters > 0 ? variant.price / meters : undefined;
+}
+
+/** O kolik procent je měrná cena varianty nižší než u nejmenšího balení; undefined, pokud rozdíl není znatelný. */
+export function unitSavingPercent(p: Product, variant: Variant): number | undefined {
+  const own = pricePerMeter(p, variant);
+  if (own === undefined) return undefined;
+  const base = Math.max(...p.variants.map((x) => pricePerMeter(p, x) ?? 0));
+  if (base <= 0) return undefined;
+  const pct = Math.round((1 - own / base) * 100);
+  return pct >= 3 ? pct : undefined;
+}
+
+/** Které kategorie dávají k produktu smysl jako doplněk (v pořadí důležitosti). */
+export const COMPLEMENTS: Partial<Record<Category, Category[]>> = {
+  "Vlasce": ["Bižuterie", "Olova"],
+  "Boilies": ["Dipy a boostery", "Pelety a partikly", "Bižuterie"],
+  "Pelety a partikly": ["Dipy a boostery", "Boilies"],
+  "Dipy a boostery": ["Boilies", "Pelety a partikly"],
+  "Pruty": ["Navijáky", "Vlasce"],
+  "Navijáky": ["Pruty", "Vlasce"],
+  "Feeder": ["Feeder", "Pelety a partikly"],
+  "Bižuterie": ["Vlasce", "Olova", "Boilies"],
+  "Olova": ["Bižuterie", "Vlasce"],
+  "Přívlač": ["Přívlač", "Navijáky"],
+  "Sumcařina": ["Sumcařina", "Pruty"],
+  "Bait Lab": ["Bait Lab", "Dipy a boostery"],
+};
+
+/** Doplňky k produktu: nejdřív AS-Match, pak skladové produkty z navazujících kategorií na stejné vody. Max 3, bez výplně. */
+export function complementsFor(p: Product): Product[] {
+  const matched = p.matchSlug ? getProduct(p.matchSlug) : undefined;
+  const order = COMPLEMENTS[p.category] ?? [];
+  const rest = PRODUCTS
+    .filter((x) => x.slug !== p.slug && x.slug !== matched?.slug && order.includes(x.category) && totalStock(x) > 0 && x.water.some((w) => p.water.includes(w)))
+    .sort((a, b) => order.indexOf(a.category) - order.indexOf(b.category));
+  return [...(matched ? [matched] : []), ...rest].slice(0, 3);
+}
+
 export const getProduct = (slug: string) => PRODUCTS.find((p) => p.slug === slug);
 export const minPrice = (p: Product) => Math.min(...p.variants.map((v) => v.price));
 export const totalStock = (p: Product) => p.variants.reduce((a, v) => a + v.stock, 0);
