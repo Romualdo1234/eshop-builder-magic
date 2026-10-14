@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "AS-FISH – rybářské potřeby z Ostravy" },
-      { name: "description", content: "Kaprařina a method feeder od rybářů z Ostravy. Doprava zdarma od 1 499 Kč, Z-Box od 69 Kč." },
+      { name: "description", content: "Kaprařina a method feeder od rybářů z Ostravy. Osobní odběr v Ostravě, Z-Box od 69 Kč." },
       { property: "og:title", content: "AS-FISH – rybářské potřeby z Ostravy" },
       { property: "og:description", content: "Nekupujte zbytečnosti. Vyrazte k vodě s vybavením, které funguje." },
       { property: "og:type", content: "website" },
@@ -81,7 +81,7 @@ function Home() {
             <Button asChild variant="outline" className="mt-6 rounded-full"><Link to="/prodejna">Otevírací doba a kontakt<ArrowRight /></Link></Button>
           </div>
           <div className="grid grid-cols-3 gap-3 text-center">
-            {[["1 499 Kč", "doprava zdarma"], ["69 Kč", "Z-Box"], ["14:00", "expedice dnes"]].map(([a, b]) => (
+            {[["0 Kč", "osobní odběr"], ["od 69 Kč", "Z-Box"], ["14:00", "expedice dnes"]].map(([a, b]) => (
               <div key={b} className="rounded-xl bg-background/60 border p-4 sm:p-5"><div className="font-display font-bold text-2xl sm:text-3xl text-accent">{a}</div><div className="mt-1 text-xs text-muted-foreground">{b}</div></div>
             ))}
           </div>

@@ -3,7 +3,6 @@ import { useState, type FormEvent } from "react";
 import { Layout } from "@/components/Layout";
 import { useCart } from "@/lib/cart";
 import { PAYMENTS, SHIPPING, formatCZK, shippingPrice } from "@/lib/shop";
-import { FreeShippingBar } from "./kosik";
 
 export const Route = createFileRoute("/pokladna")({
   head: () => ({
@@ -24,7 +23,7 @@ function Checkout() {
   const [ship, setShip] = useState("zbox");
   const [pay, setPay] = useState("card");
   const [done, setDone] = useState<string | null>(null);
-  const shipCost = shippingPrice(ship, subtotal);
+  const shipCost = shippingPrice(ship);
   const payCost = PAYMENTS.find((p) => p.id === pay)!.price;
   const total = subtotal + shipCost + payCost;
 
@@ -69,7 +68,7 @@ function Checkout() {
               <label key={s.id} className={opt(ship === s.id)}>
                 <input type="radio" name="ship" checked={ship === s.id} onChange={() => setShip(s.id)} />
                 <div className="flex-1"><div className="font-semibold">{s.label}</div><div className="text-xs text-muted-foreground">{s.note}</div></div>
-                <b>{shippingPrice(s.id, subtotal) === 0 ? "Zdarma" : formatCZK(s.price)}</b>
+                <b>{shippingPrice(s.id) === 0 ? "Zdarma" : formatCZK(s.price)}</b>
               </label>
             ))}
           </section>
@@ -85,7 +84,6 @@ function Checkout() {
           </section>
         </div>
         <aside className="space-y-4 md:sticky md:top-24 self-start">
-          <FreeShippingBar subtotal={subtotal} />
           <div className="rounded-lg border bg-card p-5 space-y-2 text-sm">
             <div className="flex justify-between"><span>Zboží</span><span>{formatCZK(subtotal)}</span></div>
             <div className="flex justify-between"><span>Doprava</span><span>{shipCost ? formatCZK(shipCost) : "Zdarma"}</span></div>

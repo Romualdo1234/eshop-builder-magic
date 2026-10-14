@@ -21,8 +21,6 @@ export type Product = {
   water: string[];
 };
 
-export const FREE_SHIPPING_LIMIT = 1499;
-
 export type ShippingMethod = { id: string; label: string; note: string; price: number };
 export const SHIPPING: ShippingMethod[] = [
   { id: "pickup", label: "Osobní odběr – Ostrava, Nádražní", note: "Připraveno ještě dnes", price: 0 },
@@ -31,10 +29,9 @@ export const SHIPPING: ShippingMethod[] = [
   { id: "ppl", label: "PPL na adresu", note: "1–2 pracovní dny", price: 119 },
 ];
 
-export function shippingPrice(methodId: string, subtotal: number): number {
+export function shippingPrice(methodId: string, _subtotal: number = 0): number {
   const m = SHIPPING.find((s) => s.id === methodId);
   if (!m) return 0;
-  if (subtotal >= FREE_SHIPPING_LIMIT) return 0;
   return m.price;
 }
 

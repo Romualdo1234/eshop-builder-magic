@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { MapPin, ShoppingBag, Truck, Clock } from "lucide-react";
+import { MapPin, ShoppingBag, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
 
-// Logo je ve /public, aby se na Vercelu (i jinde) vždy načetlo.
-const LOGO_SRC = "/logo-white.png";
+// Originální modré logo prodejny je v /public, aby se vždy načetlo (Vercel i jinde).
+const LOGO_SRC = "/logo-horizontal.png";
 
 const NAV = [
   { label: "Katalog", to: "/katalog" as const },
@@ -20,15 +20,15 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="min-h-screen flex flex-col">
       <div className="bg-primary text-primary-foreground text-xs sm:text-sm">
         <div className="mx-auto max-w-6xl px-4 py-2 flex items-center justify-center sm:justify-between gap-4">
-          <span className="inline-flex items-center gap-2 font-medium"><Truck className="size-4" />Doprava zdarma od 1 499 Kč</span>
-          <span className="hidden sm:inline-flex items-center gap-2"><Clock className="size-4" />Objednávky do 14:00 odesíláme ještě dnes</span>
+          <span className="inline-flex items-center gap-2 font-medium"><MapPin className="size-4" />Prodejna Ostrava, Nádražní · Po–Pá 9–17</span>
+          <span className="hidden sm:inline-flex items-center gap-2"><Clock className="size-4" />Objednávky do 14:00 expedujeme ještě dnes</span>
         </div>
       </div>
 
       <header className="sticky top-0 z-30 border-b border-brand-border bg-brand-surface/95 backdrop-blur text-brand-ink">
         <div className="mx-auto max-w-6xl px-4 h-16 sm:h-20 flex items-center gap-4 sm:gap-8">
           <Link to="/" aria-label="AS-FISH – úvodní stránka" className="flex items-center gap-3 shrink-0">
-            <img src={LOGO_SRC} alt="AS-FISH – rybářské potřeby" width={887} height={443} className="h-10 w-auto sm:h-14 rounded-sm" />
+            <img src={LOGO_SRC} alt="AS-FISH – rybářské potřeby" width={900} height={307} className="h-10 w-auto sm:h-14" />
             <span className="hidden md:block font-display text-2xl font-bold tracking-tight">AS-FISH</span>
           </Link>
 
@@ -66,7 +66,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <footer className="border-t border-brand-border bg-brand-surface mt-20 text-brand-muted">
         <div className="mx-auto max-w-6xl px-4 py-12 grid gap-10 md:grid-cols-4 text-sm">
           <div className="md:col-span-1">
-            <img src={LOGO_SRC} alt="AS-FISH – rybářské potřeby" width={887} height={443} className="h-16 w-auto rounded-sm mb-4" />
+            <img src={LOGO_SRC} alt="AS-FISH – rybářské potřeby" width={900} height={307} className="h-16 w-auto mb-4" />
             <p className="leading-relaxed">Rybářské potřeby z Ostravy. Výbavu testujeme přímo na revírech.</p>
           </div>
           <div>

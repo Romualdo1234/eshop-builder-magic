@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { useCart } from "@/lib/cart";
-import { FREE_SHIPPING_LIMIT, formatCZK, getProduct } from "@/lib/shop";
+import { formatCZK, getProduct } from "@/lib/shop";
 
 export const Route = createFileRoute("/kosik")({
   head: () => ({
@@ -9,24 +9,13 @@ export const Route = createFileRoute("/kosik")({
       { title: "Košík – AS-FISH" },
       { name: "description", content: "Váš nákupní košík AS-FISH." },
       { property: "og:title", content: "Košík – AS-FISH" },
-      { property: "og:description", content: "Doprava zdarma od 1 499 Kč." },
+      { property: "og:description", content: "Z-Box od 69 Kč, osobní odběr v Ostravě zdarma." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Cart,
 });
-
-export function FreeShippingBar({ subtotal }: { subtotal: number }) {
-  const pct = Math.min(100, (subtotal / FREE_SHIPPING_LIMIT) * 100);
-  const left = FREE_SHIPPING_LIMIT - subtotal;
-  return (
-    <div className="rounded-lg border bg-card p-4">
-      <div className="text-sm mb-2">{left > 0 ? <>Do dopravy zdarma zbývá <b>{formatCZK(left)}</b></> : <b className="text-success">Máte dopravu zdarma!</b>}</div>
-      <div className="h-2 rounded-full bg-muted overflow-hidden"><div className="h-full bg-accent transition-all" style={{ width: `${pct}%` }} /></div>
-    </div>
-  );
-}
 
 function Cart() {
   const { items, setQty, subtotal } = useCart();
@@ -38,7 +27,6 @@ function Cart() {
           <div className="text-muted-foreground">Košík je prázdný. <Link to="/katalog" className="text-accent">Do katalogu →</Link></div>
         ) : (
           <div className="space-y-6">
-            <FreeShippingBar subtotal={subtotal} />
             <div className="divide-y rounded-lg border bg-card">
               {items.map((i) => {
                 const p = getProduct(i.slug); const v = p?.variants.find((x) => x.id === i.variantId);
