@@ -10,6 +10,8 @@ export const Route = createFileRoute("/kosik")({
       { name: "description", content: "Váš nákupní košík AS-FISH." },
       { property: "og:title", content: "Košík – AS-FISH" },
       { property: "og:description", content: "Doprava zdarma od 1 499 Kč." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Cart,

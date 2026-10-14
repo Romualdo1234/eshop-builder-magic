@@ -19,6 +19,8 @@ export const Route = createFileRoute("/produkt/$slug")({
           { name: "description", content: `${loaderData.name} od ${loaderData.brand}. Skladem v Ostravě, expedice dnes.` },
           { property: "og:title", content: `${loaderData.name} | AS-FISH` },
           { property: "og:description", content: `${loaderData.brand} – skladem v Ostravě.` },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Produkt nenalezen | AS-FISH" }, { name: "robots", content: "noindex" }],
   }),

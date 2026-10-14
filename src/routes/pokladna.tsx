@@ -12,6 +12,8 @@ export const Route = createFileRoute("/pokladna")({
       { name: "description", content: "Dokončení objednávky na jedné stránce." },
       { property: "og:title", content: "Pokladna – AS-FISH" },
       { property: "og:description", content: "Rychlý checkout s Z-Boxem, Balíkovnou i osobním odběrem." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Checkout,
