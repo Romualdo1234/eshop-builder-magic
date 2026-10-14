@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Layout } from "@/components/Layout";
+import { ProductImage } from "@/components/ProductImage";
 import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/lib/cart";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -69,13 +70,12 @@ function ProductPage() {
       <div className="mx-auto max-w-6xl px-4 py-10">
         <Link to="/katalog" className="text-sm text-muted-foreground">← Katalog</Link>
         <div className="mt-4 grid md:grid-cols-2 gap-10">
-          <img src={p.image} alt={p.name} width={816} height={816} className="rounded-lg border w-full aspect-square object-cover" />
+          <ProductImage p={p} className="rounded-lg border w-full aspect-square" />
           <div>
             <div className="text-sm uppercase tracking-wider text-muted-foreground">{p.brand} · SKU {p.slug.toUpperCase().slice(0, 10)}-{v.id}</div>
             <h1 className="font-display text-4xl md:text-5xl mt-1">{p.name}</h1>
-            <div className="mt-2 flex gap-3 text-sm">
-              <span className="rounded bg-accent text-accent-foreground font-bold px-2">AS-SCORE {p.score}/10</span>
-              <span className="text-muted-foreground">★ {p.rating} · {p.reviews} recenzí</span>
+            <div className="mt-2 flex gap-3 text-sm empty:hidden">
+              {p.score !== undefined && <span className="rounded bg-accent text-accent-foreground font-bold px-2">AS-SCORE {p.score}/10</span>}
             </div>
             <div className="mt-6 text-4xl font-bold">{formatCZK(v.price)}</div>
             <div className={`mt-2 text-sm font-semibold ${v.stock > 0 ? "text-success" : "text-muted-foreground"}`}>

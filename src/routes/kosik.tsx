@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ProductImage } from "@/components/ProductImage";
 import { Layout } from "@/components/Layout";
 import { useCart } from "@/lib/cart";
 import { formatCZK, getProduct } from "@/lib/shop";
@@ -33,7 +34,7 @@ function Cart() {
                 if (!p || !v) return null;
                 return (
                   <div key={i.slug + i.variantId} className="flex items-center gap-4 p-4">
-                    <img src={p.image} alt={p.name} width={64} height={64} className="h-16 w-16 rounded object-cover" />
+                    <ProductImage p={p} compact className="h-16 w-16 shrink-0 rounded" />
                     <div className="flex-1">
                       <Link to="/produkt/$slug" params={{ slug: p.slug }} className="font-semibold">{p.name}</Link>
                       <div className="text-sm text-muted-foreground">{v.label}</div>

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { ProductCard } from "@/components/ProductCard";
-import { PRODUCTS, WATERS, minPrice, totalStock } from "@/lib/shop";
+import { CATEGORIES, PRODUCTS, WATERS, minPrice, totalStock } from "@/lib/shop";
 
 type Search = { kategorie?: string | undefined; znacka?: string | undefined; voda?: string | undefined; skladem?: boolean | undefined; razeni?: string | undefined };
 
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/katalog")({
   head: () => ({
     meta: [
       { title: "Katalog – AS-FISH" },
-      { name: "description", content: "Boilies, pruty, navijáky a method feeder s filtry podle značky, revíru a skladovosti." },
+      { name: "description", content: "Boilies, pruty, navijáky, feeder, vlasce, bižuterie, přívlač a vybavení s filtry podle značky, revíru a skladovosti." },
       { property: "og:title", content: "Katalog – AS-FISH" },
       { property: "og:description", content: "Filtrujte napříč značkami podle revíru a dostupnosti." },
       { property: "og:type", content: "website" },
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/katalog")({
   component: Catalog,
 });
 
-const CATS = Array.from(new Set(PRODUCTS.map((p) => p.category)));
+const CATS = CATEGORIES.filter((c) => PRODUCTS.some((p) => p.category === c));
 const BRANDS = Array.from(new Set(PRODUCTS.map((p) => p.brand)));
 
 function Chip({ active, children, search }: { active: boolean; children: string; search: (p: Search) => Search }) {
@@ -43,7 +43,7 @@ function Catalog() {
     (!s.kategorie || p.category === s.kategorie) && (!s.znacka || p.brand === s.znacka) &&
     (!s.voda || p.water.includes(s.voda)) && (!s.skladem || totalStock(p) > 0));
   if (s.razeni === "cena") list = [...list].sort((a, b) => minPrice(a) - minPrice(b));
-  else list = [...list].sort((a, b) => b.score - a.score);
+  else list = [...list].sort((a, b) => (b.score ?? 0) - (a.score ?? 0) || a.name.localeCompare(b.name, "cs"));
 
   const group = (label: string, key: keyof Search, values: string[]) => (
     <div>
@@ -65,7 +65,7 @@ function Catalog() {
           {group("Značka", "znacka", BRANDS)}
           <div className="flex flex-wrap gap-2">
             <Chip active={!!s.skladem} search={(p) => ({ ...p, skladem: p.skladem ? undefined : true })}>Jen skladem</Chip>
-            <Chip active={s.razeni !== "cena"} search={(p) => ({ ...p, razeni: undefined })}>Řadit: AS-SCORE</Chip>
+            <Chip active={s.razeni !== "cena"} search={(p) => ({ ...p, razeni: undefined })}>Řadit: doporučené</Chip>
             <Chip active={s.razeni === "cena"} search={(p) => ({ ...p, razeni: "cena" })}>Řadit: cena</Chip>
           </div>
         </div>

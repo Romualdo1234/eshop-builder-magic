@@ -67,7 +67,7 @@ function Home() {
       <section className="mx-auto max-w-6xl px-4 py-10">
         <SectionHead eyebrow="Nejlépe hodnocené" title="6 věcí, za které dáme ruku do ohně" />
         <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3">
-          {[...PRODUCTS].sort((a, b) => b.score - a.score).slice(0, 6).map((p) => <ProductCard key={p.slug} p={p} />)}
+          {PRODUCTS.filter((p) => p.score !== undefined).sort((a, b) => (b.score ?? 0) - (a.score ?? 0)).slice(0, 6).map((p) => <ProductCard key={p.slug} p={p} />)}
         </div>
       </section>
 

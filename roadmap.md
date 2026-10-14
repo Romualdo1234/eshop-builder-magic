@@ -19,7 +19,8 @@ Hotovo:
 - [x] Doprava: osobní odběr, Z-Box, Balíkovna, PPL; platby: karta, převod, dobírka.
 
 Chybí pro ostrý provoz:
-- [ ] Skutečný katalog, ceny, fotografie a skladové stavy.
+- [x] Katalog rozšířen na ukázkových 45 produktů ve všech kategoriích z auditu, bez fotek (značková dlaždice).
+- [ ] Skutečný katalog, ceny, fotografie a skladové stavy (ukázková data nahradit skutečným feedem).
 - [ ] Skutečné platby, objednávky v databázi, potvrzovací e-maily.
 - [ ] Obchodní podmínky, GDPR, reklamační řád, cookies.
 - [ ] Ověřené recenze, ověřená adresa, otevírací doba a telefon.
