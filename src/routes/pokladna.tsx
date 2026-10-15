@@ -21,7 +21,7 @@ export const Route = createFileRoute("/pokladna")({
 function Checkout() {
   const { items, subtotal, clear } = useCart();
   const [ship, setShip] = useState("zbox");
-  const [pay, setPay] = useState("card");
+  const [pay, setPay] = useState("transfer");
   const [done, setDone] = useState<string | null>(null);
   const shipCost = shippingPrice(ship);
   const payCost = PAYMENTS.find((p) => p.id === pay)!.price;

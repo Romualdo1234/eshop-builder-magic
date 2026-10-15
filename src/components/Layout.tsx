@@ -73,11 +73,14 @@ export function Layout({ children }: { children: ReactNode }) {
               <li><Link to="/kosik" className="hover:text-accent transition-colors">Košík</Link></li>
               <li><Link to="/prodejna" className="hover:text-accent transition-colors">Prodejna a kontakt</Link></li>
               <li><Link to="/obchodni-podminky" className="hover:text-accent transition-colors">Obchodní podmínky</Link></li>
+              <li><Link to="/reklamacni-rad" className="hover:text-accent transition-colors">Reklamační řád</Link></li>
+              <li><Link to="/odstoupeni-od-smlouvy" className="hover:text-accent transition-colors">Odstoupení od smlouvy</Link></li>
+              <li><Link to="/ochrana-osobnich-udaju" className="hover:text-accent transition-colors">Ochrana osobních údajů</Link></li>
             </ul>
           </div>
           <div>
             <div className="text-brand-ink font-semibold mb-3">Hodnocení a platby</div>
-            <p className="leading-relaxed">Zboží.cz 100 % spokojenost<br />Heureka 96 %<br />Karta, Apple Pay, Google Pay, převod</p>
+            <p className="leading-relaxed">Zboží.cz 100 % spokojenost<br />Heureka 96 %<br />Převodem, dobírkou nebo hotově v prodejně</p>
           </div>
         </div>
         <div className="border-t border-brand-border">

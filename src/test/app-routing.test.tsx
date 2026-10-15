@@ -22,3 +22,10 @@ describe("Obchodní podmínky", () => {
     expect(router.matchRoutes("/obchodni-podminky").at(-1)?.routeId).toBe("/obchodni-podminky");
   });
 });
+
+describe("Právní stránky", () => {
+  it.each(["/reklamacni-rad", "/odstoupeni-od-smlouvy", "/ochrana-osobnich-udaju"])("%s existuje", (path) => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes(path).at(-1)?.routeId).toBe(path);
+  });
+});

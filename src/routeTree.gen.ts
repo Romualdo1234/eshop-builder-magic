@@ -13,8 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as KatalogRouteImport } from './routes/katalog'
 import { Route as KosikRouteImport } from './routes/kosik'
 import { Route as ObchodniPodminkyRouteImport } from './routes/obchodni-podminky'
+import { Route as OchranaOsobnichUdajuRouteImport } from './routes/ochrana-osobnich-udaju'
+import { Route as OdstoupeniOdSmlouvyRouteImport } from './routes/odstoupeni-od-smlouvy'
 import { Route as PokladnaRouteImport } from './routes/pokladna'
 import { Route as ProdejnaRouteImport } from './routes/prodejna'
+import { Route as ReklamacniRadRouteImport } from './routes/reklamacni-rad'
 import { Route as ProduktSlugRouteImport } from './routes/produkt.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -37,6 +40,16 @@ const ObchodniPodminkyRoute = ObchodniPodminkyRouteImport.update({
   path: '/obchodni-podminky',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OchranaOsobnichUdajuRoute = OchranaOsobnichUdajuRouteImport.update({
+  id: '/ochrana-osobnich-udaju',
+  path: '/ochrana-osobnich-udaju',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OdstoupeniOdSmlouvyRoute = OdstoupeniOdSmlouvyRouteImport.update({
+  id: '/odstoupeni-od-smlouvy',
+  path: '/odstoupeni-od-smlouvy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PokladnaRoute = PokladnaRouteImport.update({
   id: '/pokladna',
   path: '/pokladna',
@@ -45,6 +58,11 @@ const PokladnaRoute = PokladnaRouteImport.update({
 const ProdejnaRoute = ProdejnaRouteImport.update({
   id: '/prodejna',
   path: '/prodejna',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReklamacniRadRoute = ReklamacniRadRouteImport.update({
+  id: '/reklamacni-rad',
+  path: '/reklamacni-rad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProduktSlugRoute = ProduktSlugRouteImport.update({
@@ -58,8 +76,11 @@ export interface FileRoutesByFullPath {
   '/katalog': typeof KatalogRoute
   '/kosik': typeof KosikRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
+  '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
+  '/odstoupeni-od-smlouvy': typeof OdstoupeniOdSmlouvyRoute
   '/pokladna': typeof PokladnaRoute
   '/prodejna': typeof ProdejnaRoute
+  '/reklamacni-rad': typeof ReklamacniRadRoute
   '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRoutesByTo {
@@ -67,8 +88,11 @@ export interface FileRoutesByTo {
   '/katalog': typeof KatalogRoute
   '/kosik': typeof KosikRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
+  '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
+  '/odstoupeni-od-smlouvy': typeof OdstoupeniOdSmlouvyRoute
   '/pokladna': typeof PokladnaRoute
   '/prodejna': typeof ProdejnaRoute
+  '/reklamacni-rad': typeof ReklamacniRadRoute
   '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRoutesById {
@@ -77,8 +101,11 @@ export interface FileRoutesById {
   '/katalog': typeof KatalogRoute
   '/kosik': typeof KosikRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
+  '/ochrana-osobnich-udaju': typeof OchranaOsobnichUdajuRoute
+  '/odstoupeni-od-smlouvy': typeof OdstoupeniOdSmlouvyRoute
   '/pokladna': typeof PokladnaRoute
   '/prodejna': typeof ProdejnaRoute
+  '/reklamacni-rad': typeof ReklamacniRadRoute
   '/produkt/$slug': typeof ProduktSlugRoute
 }
 export interface FileRouteTypes {
@@ -88,8 +115,11 @@ export interface FileRouteTypes {
     | '/katalog'
     | '/kosik'
     | '/obchodni-podminky'
+    | '/ochrana-osobnich-udaju'
+    | '/odstoupeni-od-smlouvy'
     | '/pokladna'
     | '/prodejna'
+    | '/reklamacni-rad'
     | '/produkt/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -97,8 +127,11 @@ export interface FileRouteTypes {
     | '/katalog'
     | '/kosik'
     | '/obchodni-podminky'
+    | '/ochrana-osobnich-udaju'
+    | '/odstoupeni-od-smlouvy'
     | '/pokladna'
     | '/prodejna'
+    | '/reklamacni-rad'
     | '/produkt/$slug'
   id:
     | '__root__'
@@ -106,8 +139,11 @@ export interface FileRouteTypes {
     | '/katalog'
     | '/kosik'
     | '/obchodni-podminky'
+    | '/ochrana-osobnich-udaju'
+    | '/odstoupeni-od-smlouvy'
     | '/pokladna'
     | '/prodejna'
+    | '/reklamacni-rad'
     | '/produkt/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -116,8 +152,11 @@ export interface RootRouteChildren {
   KatalogRoute: typeof KatalogRoute
   KosikRoute: typeof KosikRoute
   ObchodniPodminkyRoute: typeof ObchodniPodminkyRoute
+  OchranaOsobnichUdajuRoute: typeof OchranaOsobnichUdajuRoute
+  OdstoupeniOdSmlouvyRoute: typeof OdstoupeniOdSmlouvyRoute
   PokladnaRoute: typeof PokladnaRoute
   ProdejnaRoute: typeof ProdejnaRoute
+  ReklamacniRadRoute: typeof ReklamacniRadRoute
   ProduktSlugRoute: typeof ProduktSlugRoute
 }
 
@@ -151,6 +190,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObchodniPodminkyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ochrana-osobnich-udaju': {
+      id: '/ochrana-osobnich-udaju'
+      path: '/ochrana-osobnich-udaju'
+      fullPath: '/ochrana-osobnich-udaju'
+      preLoaderRoute: typeof OchranaOsobnichUdajuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/odstoupeni-od-smlouvy': {
+      id: '/odstoupeni-od-smlouvy'
+      path: '/odstoupeni-od-smlouvy'
+      fullPath: '/odstoupeni-od-smlouvy'
+      preLoaderRoute: typeof OdstoupeniOdSmlouvyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pokladna': {
       id: '/pokladna'
       path: '/pokladna'
@@ -163,6 +216,13 @@ declare module '@tanstack/react-router' {
       path: '/prodejna'
       fullPath: '/prodejna'
       preLoaderRoute: typeof ProdejnaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reklamacni-rad': {
+      id: '/reklamacni-rad'
+      path: '/reklamacni-rad'
+      fullPath: '/reklamacni-rad'
+      preLoaderRoute: typeof ReklamacniRadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/produkt/$slug': {
@@ -180,8 +240,11 @@ const rootRouteChildren: RootRouteChildren = {
   KatalogRoute: KatalogRoute,
   KosikRoute: KosikRoute,
   ObchodniPodminkyRoute: ObchodniPodminkyRoute,
+  OchranaOsobnichUdajuRoute: OchranaOsobnichUdajuRoute,
+  OdstoupeniOdSmlouvyRoute: OdstoupeniOdSmlouvyRoute,
   PokladnaRoute: PokladnaRoute,
   ProdejnaRoute: ProdejnaRoute,
+  ReklamacniRadRoute: ReklamacniRadRoute,
   ProduktSlugRoute: ProduktSlugRoute,
 }
 export const routeTree = rootRouteImport

@@ -166,7 +166,7 @@ function ProductPage() {
             </div>
             <ul className="mt-2 text-sm text-muted-foreground space-y-1">
               <li>Osobní odběr v Ostravě zdarma{zbox ? ` · Z-Box od ${formatCZK(zbox.price)}` : ""}</li>
-              <li>Platba kartou, Apple Pay, Google Pay nebo převodem{cod ? ` · dobírka +${formatCZK(cod.price)}` : ""}</li>
+              <li>Platba převodem{cod ? ` · dobírka +${formatCZK(cod.price)}` : ""}</li>
             </ul>
 
             <div className="mt-8 rounded-lg border border-l-4 border-l-accent bg-card p-5 space-y-2 text-base">

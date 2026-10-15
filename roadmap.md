@@ -16,13 +16,14 @@ Hotovo:
 - [x] Úvodní stránka (hero, rozcestník „Kam dnes míříte?“, 6 doporučených produktů, prodejna, recenze).
 - [x] Katalog s filtry, košík, pokladna (ukázková).
 - [x] Detail produktu ve třech vrstvách: verdikt nad ohybem, text „Jak to funguje u vody“, tabulka parametrů a časté otázky (zatím plně vyplněný jen naviják Big Pit 5000; ostatní produkty mají základní parametry). Přidána strukturovaná data Product.
-- [x] Doprava: osobní odběr, Z-Box, Balíkovna, PPL; platby: karta, převod, dobírka.
+- [x] Doprava: osobní odběr, Z-Box, Balíkovna, PPL; platby: převod, dobírka (karta se zatím nenabízí – shodně s obchodními podmínkami).
 
 Chybí pro ostrý provoz:
 - [x] Katalog rozšířen na ukázkových 45 produktů ve všech kategoriích z auditu, bez fotek (značková dlaždice).
 - [ ] Skutečný katalog, ceny, fotografie a skladové stavy (ukázková data nahradit skutečným feedem).
 - [ ] Skutečné platby, objednávky v databázi, potvrzovací e-maily.
-- [ ] Obchodní podmínky, GDPR, reklamační řád, cookies.
+- [x] Obchodní podmínky, reklamační řád, odstoupení od smlouvy a zásady ochrany osobních údajů (texty ke kontrole právníkem).
+- [ ] Cookie lišta se souhlasem.
 - [ ] Ověřené recenze, ověřená adresa, otevírací doba a telefon.
 
 ## Klíčové rozhodnutí: platforma

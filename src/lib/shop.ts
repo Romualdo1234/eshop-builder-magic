@@ -52,7 +52,6 @@ export function shippingPrice(methodId: string, _subtotal: number = 0): number {
 }
 
 export const PAYMENTS = [
-  { id: "card", label: "Kartou / Apple Pay / Google Pay", price: 0 },
   { id: "transfer", label: "Bankovní převod", price: 0 },
   { id: "cod", label: "Dobírka", price: 39 },
 ];
