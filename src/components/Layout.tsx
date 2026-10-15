@@ -57,38 +57,11 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="flex-1">{children}</main>
 
       <footer className="border-t border-brand-border bg-brand-surface mt-20 text-brand-muted">
-        <div className="mx-auto max-w-6xl px-4 py-12 grid gap-10 md:grid-cols-4 text-sm">
-          <div className="md:col-span-1">
-            <img src={LOGO_SRC} alt="AS-FISH – rybářské potřeby" width={900} height={307} className="h-16 w-auto mb-4" />
-            <p className="leading-relaxed">Rybářské potřeby z Ostravy. Výbavu testujeme přímo na revírech.</p>
-          </div>
-          <div>
-            <div className="text-brand-ink font-semibold mb-3">Prodejna</div>
-            <p className="leading-relaxed">Nádražní, Ostrava<br />Po–Pá 9–17, So 8–12<br />Nonstop výdejní box</p>
-          </div>
-          <div>
-            <div className="text-brand-ink font-semibold mb-3">Nakupujte</div>
-            <ul className="space-y-1.5">
-              <li><Link to="/katalog" className="hover:text-accent transition-colors">Katalog</Link></li>
-              <li><Link to="/kosik" className="hover:text-accent transition-colors">Košík</Link></li>
-              <li><Link to="/prodejna" className="hover:text-accent transition-colors">Prodejna a kontakt</Link></li>
-              <li><Link to="/obchodni-podminky" className="hover:text-accent transition-colors">Obchodní podmínky</Link></li>
-              <li><Link to="/reklamacni-rad" className="hover:text-accent transition-colors">Reklamační řád</Link></li>
-              <li><Link to="/odstoupeni-od-smlouvy" className="hover:text-accent transition-colors">Odstoupení od smlouvy</Link></li>
-              <li><Link to="/ochrana-osobnich-udaju" className="hover:text-accent transition-colors">Ochrana osobních údajů</Link></li>
-            </ul>
-          </div>
-          <div>
-            <div className="text-brand-ink font-semibold mb-3">Hodnocení a platby</div>
-            <p className="leading-relaxed">Zboží.cz 100 % spokojenost<br />Heureka 96 %<br />Převodem, dobírkou nebo hotově v prodejně</p>
-          </div>
-        </div>
-        <div className="border-t border-brand-border">
-          <div className="mx-auto max-w-6xl px-4 py-4 text-xs flex flex-wrap gap-x-4 gap-y-1 justify-between">
-            <span>© {new Date().getFullYear()} AS-FISH · Ostrava</span>
-            <Link to="/obchodni-podminky" className="hover:text-accent transition-colors">Obchodní podmínky</Link>
-          </div>
-        </div>
+        <nav aria-label="Patička" className="mx-auto max-w-6xl px-4 py-8 flex flex-wrap gap-x-8 gap-y-2 text-sm">
+          <Link to="/obchodni-podminky" className="hover:text-accent transition-colors">Obchodní podmínky</Link>
+          <Link to="/ochrana-osobnich-udaju" className="hover:text-accent transition-colors">Ochrana osobních údajů</Link>
+          <Link to="/doprava" className="hover:text-accent transition-colors">Doprava</Link>
+        </nav>
       </footer>
     </div>
   );

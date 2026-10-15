@@ -10,7 +10,7 @@ export const Route = createFileRoute("/pokladna")({
       { title: "Pokladna – AS-FISH" },
       { name: "description", content: "Dokončení objednávky na jedné stránce." },
       { property: "og:title", content: "Pokladna – AS-FISH" },
-      { property: "og:description", content: "Rychlý checkout s Z-Boxem, Balíkovnou i osobním odběrem." },
+      { property: "og:description", content: "Rychlý checkout s dopravou PPL i osobním odběrem." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -20,12 +20,11 @@ export const Route = createFileRoute("/pokladna")({
 
 function Checkout() {
   const { items, subtotal, clear } = useCart();
-  const [ship, setShip] = useState("zbox");
+  const [ship, setShip] = useState("ppl-cz");
   const [pay, setPay] = useState("transfer");
   const [done, setDone] = useState<string | null>(null);
-  const shipCost = shippingPrice(ship);
-  const payCost = PAYMENTS.find((p) => p.id === pay)!.price;
-  const total = subtotal + shipCost + payCost;
+  const shipCost = shippingPrice(ship, subtotal, pay);
+    const total = subtotal + shipCost;
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -59,7 +58,7 @@ function Checkout() {
               <input required placeholder="Jméno a příjmení" className={input} />
               <input required type="tel" placeholder="Telefon" className={input} />
               <input required type="email" placeholder="E-mail" className={`${input} sm:col-span-2`} />
-              {ship === "ppl" && <input required placeholder="Ulice, město, PSČ" className={`${input} sm:col-span-2`} />}
+              {ship !== "pickup" && <input required placeholder="Ulice, město, PSČ" className={`${input} sm:col-span-2`} />}
             </div>
           </section>
           <section className="space-y-2">
@@ -68,9 +67,10 @@ function Checkout() {
               <label key={s.id} className={opt(ship === s.id)}>
                 <input type="radio" name="ship" checked={ship === s.id} onChange={() => setShip(s.id)} />
                 <div className="flex-1"><div className="font-semibold">{s.label}</div><div className="text-xs text-muted-foreground">{s.note}</div></div>
-                <b>{shippingPrice(s.id) === 0 ? "Zdarma" : formatCZK(s.price)}</b>
+                <b>{shippingPrice(s.id, subtotal, pay) === 0 ? "Zdarma" : formatCZK(shippingPrice(s.id, subtotal, pay))}</b>
               </label>
             ))}
+            <p className="text-xs text-muted-foreground">Cena platí pro 1 balík. Podrobnosti v sekci <Link to="/doprava" target="_blank" className="text-accent underline">Doprava</Link>.</p>
           </section>
           <section className="space-y-2">
             <h2 className="font-display text-2xl">3. Platba</h2>
@@ -87,7 +87,6 @@ function Checkout() {
           <div className="rounded-lg border bg-card p-5 space-y-2 text-sm">
             <div className="flex justify-between"><span>Zboží</span><span>{formatCZK(subtotal)}</span></div>
             <div className="flex justify-between"><span>Doprava</span><span>{shipCost ? formatCZK(shipCost) : "Zdarma"}</span></div>
-            {payCost > 0 && <div className="flex justify-between"><span>Dobírka</span><span>{formatCZK(payCost)}</span></div>}
             <div className="flex justify-between border-t pt-3 text-xl font-bold"><span>Celkem</span><span>{formatCZK(total)}</span></div>
             <label className="flex items-start gap-2 pt-2 text-xs text-muted-foreground cursor-pointer">
               <input type="checkbox" required className="mt-0.5" />

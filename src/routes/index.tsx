@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "AS-FISH – rybářské potřeby z Ostravy" },
-      { name: "description", content: "Kaprařina a method feeder od rybářů z Ostravy. Osobní odběr v Ostravě, Z-Box od 69 Kč." },
+      { name: "description", content: "Kaprařina a method feeder od rybářů z Ostravy. Osobní odběr v Ostravě, PPL po ČR od 110 Kč." },
       { property: "og:title", content: "AS-FISH – rybářské potřeby z Ostravy" },
       { property: "og:description", content: "Nekupujte zbytečnosti. Vyrazte k vodě s vybavením, které funguje." },
       { property: "og:type", content: "website" },
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
 });
 
 const REVIEWS = [
-  { t: "Objednal jsem ráno, večer jsem měl boilies v Z-Boxu. Super.", a: "Petr, kaprař – Žermanice" },
+  { t: "Objednal jsem ráno, odpoledne jsem si boilies vyzvedl na prodejně. Super.", a: "Petr, kaprař – Žermanice" },
   { t: "Poradili mi celou feederovou sestavu, nic zbytečného.", a: "Jana, method feeder – Hlučín" },
   { t: "Konečně vidím, co je skladem na prodejně.", a: "Martin, řeka Odra" },
 ];
@@ -80,7 +80,7 @@ function Home() {
             <Button asChild variant="outline" className="mt-6 rounded-full"><Link to="/prodejna">Otevírací doba a kontakt<ArrowRight /></Link></Button>
           </div>
           <div className="grid grid-cols-3 gap-3 text-center">
-            {[["0 Kč", "osobní odběr"], ["od 69 Kč", "Z-Box"], ["14:00", "expedice dnes"]].map(([a, b]) => (
+            {[["0 Kč", "osobní odběr"], ["110 Kč", "PPL, převodem do 5 000 Kč"], ["14:00", "expedice dnes"]].map(([a, b]) => (
               <div key={b} className="rounded-xl bg-background/60 border p-4 sm:p-5"><div className="font-display font-bold text-2xl sm:text-3xl text-accent">{a}</div><div className="mt-1 text-xs text-muted-foreground">{b}</div></div>
             ))}
           </div>

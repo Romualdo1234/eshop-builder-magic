@@ -8,7 +8,7 @@ import { useCart } from "@/lib/cart";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
-  PAYMENTS, SHIPPING, complementsFor, formatCZK, getProduct, minPrice, pricePerMeter, totalStock, unitSavingPercent,
+  complementsFor, formatCZK, getProduct, minPrice, pricePerMeter, shippingPrice, totalStock, unitSavingPercent,
   type Product, type Variant,
 } from "@/lib/shop";
 
@@ -98,8 +98,6 @@ function ProductPage() {
   const { add } = useCart();
   const matched = p.matchSlug ? getProduct(p.matchSlug) : undefined;
   const related = complementsFor(p);
-  const zbox = SHIPPING.find((s) => s.id === "zbox");
-  const cod = PAYMENTS.find((x) => x.id === "cod");
   const specs = p.specs ?? [
     { label: "Značka", value: p.brand },
     { label: "Kategorie", value: p.category },
@@ -165,8 +163,8 @@ function ProductPage() {
               {v.stock > 0 ? `● Skladem v Ostravě: ${v.stock} ks · Expedujeme dnes do 14:00 · Odběr dnes do 17:00` : "○ Momentálně vyprodáno – naskladníme do 5 dnů"}
             </div>
             <ul className="mt-2 text-sm text-muted-foreground space-y-1">
-              <li>Osobní odběr v Ostravě zdarma{zbox ? ` · Z-Box od ${formatCZK(zbox.price)}` : ""}</li>
-              <li>Platba převodem{cod ? ` · dobírka +${formatCZK(cod.price)}` : ""}</li>
+              <li>Osobní odběr v Ostravě zdarma · PPL po ČR od {formatCZK(shippingPrice("ppl-cz", 0, "transfer"))}, převodem nad 5 000 Kč zdarma</li>
+              <li>Platba převodem nebo dobírkou</li>
             </ul>
 
             <div className="mt-8 rounded-lg border border-l-4 border-l-accent bg-card p-5 space-y-2 text-base">

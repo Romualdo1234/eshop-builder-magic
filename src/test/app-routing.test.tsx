@@ -24,7 +24,7 @@ describe("Obchodní podmínky", () => {
 });
 
 describe("Právní stránky", () => {
-  it.each(["/reklamacni-rad", "/odstoupeni-od-smlouvy", "/ochrana-osobnich-udaju"])("%s existuje", (path) => {
+  it.each(["/reklamacni-rad", "/odstoupeni-od-smlouvy", "/ochrana-osobnich-udaju", "/doprava"])("%s existuje", (path) => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
     expect(router.matchRoutes(path).at(-1)?.routeId).toBe(path);
   });

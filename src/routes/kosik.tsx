@@ -10,7 +10,7 @@ export const Route = createFileRoute("/kosik")({
       { title: "Košík – AS-FISH" },
       { name: "description", content: "Váš nákupní košík AS-FISH." },
       { property: "og:title", content: "Košík – AS-FISH" },
-      { property: "og:description", content: "Z-Box od 69 Kč, osobní odběr v Ostravě zdarma." },
+      { property: "og:description", content: "PPL po ČR od 110 Kč, osobní odběr v Ostravě zdarma." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DopravaRouteImport } from './routes/doprava'
 import { Route as KatalogRouteImport } from './routes/katalog'
 import { Route as KosikRouteImport } from './routes/kosik'
 import { Route as ObchodniPodminkyRouteImport } from './routes/obchodni-podminky'
@@ -23,6 +24,11 @@ import { Route as ProduktSlugRouteImport } from './routes/produkt.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DopravaRoute = DopravaRouteImport.update({
+  id: '/doprava',
+  path: '/doprava',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KatalogRoute = KatalogRouteImport.update({
@@ -73,6 +79,7 @@ const ProduktSlugRoute = ProduktSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/doprava': typeof DopravaRoute
   '/katalog': typeof KatalogRoute
   '/kosik': typeof KosikRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/doprava': typeof DopravaRoute
   '/katalog': typeof KatalogRoute
   '/kosik': typeof KosikRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/doprava': typeof DopravaRoute
   '/katalog': typeof KatalogRoute
   '/kosik': typeof KosikRoute
   '/obchodni-podminky': typeof ObchodniPodminkyRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/doprava'
     | '/katalog'
     | '/kosik'
     | '/obchodni-podminky'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/doprava'
     | '/katalog'
     | '/kosik'
     | '/obchodni-podminky'
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/doprava'
     | '/katalog'
     | '/kosik'
     | '/obchodni-podminky'
@@ -149,6 +161,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DopravaRoute: typeof DopravaRoute
   KatalogRoute: typeof KatalogRoute
   KosikRoute: typeof KosikRoute
   ObchodniPodminkyRoute: typeof ObchodniPodminkyRoute
@@ -167,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doprava': {
+      id: '/doprava'
+      path: '/doprava'
+      fullPath: '/doprava'
+      preLoaderRoute: typeof DopravaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/katalog': {
@@ -237,6 +257,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DopravaRoute: DopravaRoute,
   KatalogRoute: KatalogRoute,
   KosikRoute: KosikRoute,
   ObchodniPodminkyRoute: ObchodniPodminkyRoute,

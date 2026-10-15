@@ -37,24 +37,30 @@ export type Product = {
   water: string[];
 };
 
-export type ShippingMethod = { id: string; label: string; note: string; price: number };
+export type ShippingMethod = { id: string; label: string; note: string };
 export const SHIPPING: ShippingMethod[] = [
-  { id: "pickup", label: "Osobní odběr – Ostrava, Nádražní", note: "Připraveno ještě dnes", price: 0 },
-  { id: "zbox", label: "Zásilkovna Z-Box", note: "Doručení zítra", price: 69 },
-  { id: "balikovna", label: "Balíkovna", note: "Doručení zítra", price: 79 },
-  { id: "ppl", label: "PPL na adresu", note: "1–2 pracovní dny", price: 119 },
+  { id: "pickup", label: "Osobní odběr – Ostrava, Nádražní", note: "Zdarma, platba v hotovosti na prodejně" },
+  { id: "ppl-cz", label: "PPL – Česká republika", note: "Balík do 30 kg, nejdelší strana do 120 cm" },
+  { id: "ppl-sk", label: "PPL – Slovensko", note: "Balík do 30 kg" },
 ];
-
-export function shippingPrice(methodId: string, _subtotal: number = 0): number {
-  const m = SHIPPING.find((s) => s.id === methodId);
-  if (!m) return 0;
-  return m.price;
-}
 
 export const PAYMENTS = [
   { id: "transfer", label: "Bankovní převod", price: 0 },
-  { id: "cod", label: "Dobírka", price: 39 },
+  { id: "cod", label: "Dobírka (hotově při převzetí)", price: 0 },
 ];
+
+/** Ceník PPL pro 1 balík (stránka Doprava): [do hranice, nad hranici, hranice v Kč]. */
+const PPL_TARIFF: Record<string, { cod: [number, number, number]; transfer: [number, number, number] }> = {
+  "ppl-cz": { cod: [160, 50, 5000], transfer: [110, 0, 5000] },
+  "ppl-sk": { cod: [300, 200, 5000], transfer: [260, 160, 6000] },
+};
+
+export function shippingPrice(methodId: string, subtotal: number = 0, paymentId: string = "transfer"): number {
+  const t = PPL_TARIFF[methodId];
+  if (!t) return 0;
+  const [low, high, limit] = paymentId === "cod" ? t.cod : t.transfer;
+  return subtotal <= limit ? low : high;
+}
 
 export const formatCZK = (n: number) =>
   new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK", maximumFractionDigits: 0 }).format(n);
