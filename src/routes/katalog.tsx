@@ -69,7 +69,12 @@ function Catalog() {
             <Chip active={s.razeni === "cena"} search={(p) => ({ ...p, razeni: p.razeni === "cena" ? undefined : "cena" })}>Řadit: cena</Chip>
           </div>
         </div>
-        <div className="text-sm text-muted-foreground mb-4">{list.length} produktů</div>
+        <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+          <span>{list.length} produktů</span>
+          {(s.kategorie || s.znacka || s.voda || s.skladem || s.razeni) && (
+            <Link to="/katalog" search={{}} className="text-accent underline underline-offset-2">Zrušit filtry</Link>
+          )}
+        </div>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
           {list.map((p) => <ProductCard key={p.slug} p={p} />)}
         </div>
