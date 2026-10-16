@@ -6,7 +6,7 @@ export function ProductCard({ p }: { p: Product }) {
   const stock = totalStock(p);
   return (
     <Link to="/produkt/$slug" params={{ slug: p.slug }} className="group rounded-xl border bg-card overflow-hidden flex flex-col hover:border-accent hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 transition-all">
-      <div className="relative aspect-square overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden">
         <ProductImage p={p} className="h-full w-full group-hover:scale-105 transition-transform duration-500" />
       </div>
       <div className="p-4 flex flex-col gap-1 flex-1">

@@ -66,8 +66,8 @@ function Home() {
 
       <section className="mx-auto max-w-7xl px-4 py-10">
         <SectionHead eyebrow="Z naší nabídky" title="Vybrané produkty skladem v Ostravě" />
-        <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3">
-          {PRODUCTS.slice(0, 6).map((p) => <ProductCard key={p.slug} p={p} />)}
+        <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {PRODUCTS.slice(0, 8).map((p) => <ProductCard key={p.slug} p={p} />)}
         </div>
       </section>
 
