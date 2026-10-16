@@ -27,10 +27,9 @@ function Store() {
   return (
     <Layout>
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <header className="max-w-2xl">
-          <h1 className="font-display text-5xl">Kontakt</h1>
-          <p className="mt-4 text-muted-foreground">Navštivte nás na Nádražní ulici v Ostravě. Poradíme se sestavou a vyzvednete ještě dnes.</p>
-        </header>
+        <h1 className="font-display text-3xl sm:text-5xl leading-tight max-w-3xl">
+          Navštivte nás na Nádražní ulici v&nbsp;Ostravě. <span className="text-accent">Poradíme se sestavou a vyzvednete ještě dnes.</span>
+        </h1>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <section className={card} aria-labelledby="k-kontakt">
