@@ -19,7 +19,7 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="sticky top-0 z-30 border-b border-brand-border bg-brand-surface/95 backdrop-blur text-brand-ink">
-        <div className="mx-auto max-w-6xl px-4 h-16 flex items-center gap-4 sm:gap-8">
+        <div className="mx-auto max-w-7xl px-4 h-16 flex items-center gap-4 sm:gap-8">
           <Link to="/" aria-label="AS-FISH – úvodní stránka" className="flex items-center gap-3 shrink-0">
             <img src={LOGO_SRC} alt="AS-FISH – rybářské potřeby" width={900} height={307} className="h-10 w-auto sm:h-11" />
             <span className="hidden md:block font-display text-2xl font-bold tracking-tight">AS-FISH</span>
@@ -41,7 +41,7 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
 
         <nav aria-label="Hlavní navigace (mobil)" className="md:hidden border-t border-brand-border">
-          <div className="mx-auto max-w-6xl px-2 flex items-center overflow-x-auto">
+          <div className="mx-auto max-w-7xl px-2 flex items-center overflow-x-auto">
             {NAV.map((n) => (
               <Button key={n.label} asChild variant="ghost" className="text-brand-ink hover:bg-brand-soft hover:text-accent">
                 <Link to={n.to} search={n.search as never}>{n.label}</Link>
@@ -54,7 +54,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="flex-1">{children}</main>
 
       <footer className="border-t border-brand-border bg-brand-surface mt-20 text-brand-muted">
-        <nav aria-label="Patička" className="mx-auto max-w-6xl px-4 py-8 flex flex-wrap gap-x-8 gap-y-2 text-sm">
+        <nav aria-label="Patička" className="mx-auto max-w-7xl px-4 py-8 flex flex-wrap gap-x-8 gap-y-2 text-sm">
           <Link to="/obchodni-podminky" className="hover:text-accent transition-colors">Obchodní podmínky</Link>
           <Link to="/ochrana-osobnich-udaju" className="hover:text-accent transition-colors">Ochrana osobních údajů</Link>
           <Link to="/doprava" className="hover:text-accent transition-colors">Doprava</Link>

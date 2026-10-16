@@ -42,7 +42,7 @@ function Home() {
         <img src={hero} alt="Kaprové pruty u jezera za úsvitu" width={1600} height={912} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.12_0.04_250/90%)] via-[oklch(0.12_0.04_250/65%)] to-[oklch(0.12_0.04_250/20%)]" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-24 lg:py-28">
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:py-24 lg:py-28">
           <h1 className="font-display font-bold text-4xl sm:text-6xl leading-[1.05] tracking-tight max-w-2xl">Rybářské potřeby.<br /><span className="text-accent">Od rybářů pro rybáře.</span></h1>
           <p className="mt-6 max-w-lg text-base sm:text-lg text-hero-muted leading-relaxed">Vybavení, které sami bereme k vodě. Kaprařina a method feeder se zázemím v Ostravě.</p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -52,7 +52,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14">
+      <section className="mx-auto max-w-7xl px-4 py-14">
         <SectionHead eyebrow="Podle vody" title="Kam dnes míříte?" />
         <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
           {WATERS.map((w) => (
@@ -64,14 +64,14 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10">
+      <section className="mx-auto max-w-7xl px-4 py-10">
         <SectionHead eyebrow="Z naší nabídky" title="Vybrané produkty skladem v Ostravě" />
         <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3">
           {PRODUCTS.slice(0, 6).map((p) => <ProductCard key={p.slug} p={p} />)}
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="rounded-2xl border bg-card p-6 sm:p-10 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-2">Osobní odběr</p>
@@ -87,7 +87,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-8">
+      <section className="mx-auto max-w-7xl px-4 py-8">
         <SectionHead eyebrow="Reference" title="Co říkají rybáři, kteří s námi jezdí k vodě" />
         <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
           {REVIEWS.map((r) => (

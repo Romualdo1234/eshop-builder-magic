@@ -121,7 +121,7 @@ function ProductPage() {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-[1240px] px-4 sm:px-6 py-8 sm:py-10 pb-24 md:pb-10">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:py-10 pb-24 md:pb-10">
         <nav aria-label="Drobečková navigace" className="text-sm text-muted-foreground flex flex-wrap items-center gap-x-2">
           <Link to="/katalog" className="hover:text-foreground">Katalog</Link>
           <span aria-hidden>›</span>
