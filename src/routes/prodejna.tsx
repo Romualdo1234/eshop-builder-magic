@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
+import { SELLER } from "@/lib/vop";
 
 export const Route = createFileRoute("/prodejna")({
   head: () => ({
@@ -23,10 +24,25 @@ function Store() {
           <h1 className="font-display text-5xl">Prodejna Ostrava</h1>
           <p className="mt-4 text-muted-foreground">Fyzický sklad a prodejna na Nádražní ulici. Poradíme se sestavou, vyzvednete ještě dnes.</p>
           <div className="mt-6 space-y-1">
-            <div><b>Adresa:</b> Nádražní, Ostrava</div>
-            <div><b>Telefon:</b> +420 000 000 000</div>
-            <div><b>E-mail:</b> info@as-fish.cz</div>
+            <div><b>Adresa:</b> {SELLER.street}, {SELLER.zip} {SELLER.city}</div>
+            <div><b>Telefon:</b> <a className="text-accent" href={`tel:${SELLER.phone.replace(/\s/g, "")}`}>{SELLER.phone}</a></div>
+            <div><b>E-mail:</b> <a className="text-accent" href={`mailto:${SELLER.email}`}>{SELLER.email}</a></div>
           </div>
+          <h2 className="font-display text-2xl mt-10 mb-3">Fakturační a korespondenční adresa</h2>
+          <div className="space-y-1 text-sm">
+            <div className="font-semibold">{SELLER.legalName}</div>
+            <div>AS-FISH.CZ</div>
+            <div>{SELLER.street}, {SELLER.zip} {SELLER.city}</div>
+            <div className="pt-2"><b>IČ:</b> {SELLER.icoDisplay}</div>
+            <div><b>DIČ:</b> {SELLER.dic}</div>
+          </div>
+          <h2 className="font-display text-2xl mt-10 mb-3">Bankovní spojení</h2>
+          <div className="space-y-1 text-sm">
+            <div><b>Číslo účtu:</b> {SELLER.accountNumber}, {SELLER.bank}</div>
+            <div><b>IBAN:</b> {SELLER.iban}</div>
+            <div><b>SWIFT:</b> {SELLER.swift}</div>
+          </div>
+          <p className="mt-8 text-sm text-muted-foreground">V případě jakýchkoliv dotazů k prezentovaným výrobkům nás neváhejte kontaktovat telefonicky na výše uvedeném čísle nebo e-mailem. Děkujeme.</p>
         </div>
         <div className="rounded-lg border bg-card p-6">
           <h2 className="font-display text-2xl mb-3">Otevírací doba</h2>

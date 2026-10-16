@@ -4,11 +4,22 @@ export type VopSection = { title: string; items: VopItem[] };
 
 export const SELLER = {
   name: "AS-fish s.r.o. (AS-FISH.CZ)",
+  legalName: "AS-fish s.r.o.",
+  street: "Nadražní 923/118",
+  zip: "702 00",
+  city: "Ostrava",
   address: "Nadražní 923/118, Ostrava, 702 00",
   ico: "23343133",
+  icoDisplay: "233 43 133",
+  dic: "CZ23343133",
   email: "asfishostrava@gmail.com",
   phone: "+420 732 181 849",
   account: "2750020836/0600 (Moneta Money Bank, Ostrava)",
+  accountNumber: "2750020836/0600",
+  bank: "Moneta Money Bank Ostrava",
+  iban: "CZ69 0600 0000 0002 7502 0836",
+  swift: "AGBACZPP",
+  web: "www.as-fish.cz",
 };
 
 export const VOP_INTRO =

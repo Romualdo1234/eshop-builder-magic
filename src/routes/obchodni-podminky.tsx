@@ -27,11 +27,12 @@ function Terms() {
 
         <div className="mt-6 rounded-lg border bg-card p-5 text-sm grid sm:grid-cols-2 gap-x-6 gap-y-1">
           <div><b>Prodávající:</b> {SELLER.name}</div>
-          <div><b>IČO:</b> {SELLER.ico}</div>
+          <div><b>IČO:</b> {SELLER.icoDisplay} · <b>DIČ:</b> {SELLER.dic}</div>
           <div><b>Sídlo:</b> {SELLER.address}</div>
           <div><b>E-mail:</b> <a className="text-accent" href={`mailto:${SELLER.email}`}>{SELLER.email}</a></div>
           <div><b>Telefon:</b> <a className="text-accent" href={`tel:${SELLER.phone.replace(/\s/g, "")}`}>{SELLER.phone}</a></div>
           <div><b>Účet:</b> {SELLER.account}</div>
+          <div className="sm:col-span-2"><b>IBAN:</b> {SELLER.iban} · <b>SWIFT:</b> {SELLER.swift}</div>
         </div>
 
         <nav aria-label="Obsah obchodních podmínek" className="mt-8 rounded-lg border p-5">
