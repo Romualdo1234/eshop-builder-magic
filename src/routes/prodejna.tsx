@@ -17,44 +17,57 @@ export const Route = createFileRoute("/prodejna")({
   component: Store,
 });
 
+const card = "rounded-lg border bg-card p-6";
+const cardTitle = "font-display text-2xl mb-4";
+const row = "grid grid-cols-[6.5rem_1fr] gap-x-3 gap-y-2 text-sm";
+const label = "text-muted-foreground";
+
 function Store() {
+  const tel = SELLER.phone.replace(/\s/g, "");
   return (
     <Layout>
-      <div className="mx-auto max-w-4xl px-4 py-12 grid md:grid-cols-2 gap-8">
-        <div>
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        <header className="max-w-2xl">
           <h1 className="font-display text-5xl">Prodejna Ostrava</h1>
           <p className="mt-4 text-muted-foreground">Fyzický sklad a prodejna na Nádražní ulici. Poradíme se sestavou, vyzvednete ještě dnes.</p>
-          <div className="mt-6 space-y-1">
-            <div><b>Adresa:</b> {SELLER.street}, {SELLER.zip} {SELLER.city}</div>
-            <div><b>Telefon:</b> <a className="text-accent" href={`tel:${SELLER.phone.replace(/\s/g, "")}`}>{SELLER.phone}</a></div>
-            <div><b>E-mail:</b> <a className="text-accent" href={`mailto:${SELLER.email}`}>{SELLER.email}</a></div>
-          </div>
-          <h2 className="font-display text-2xl mt-10 mb-3">Fakturační a korespondenční adresa</h2>
-          <div className="space-y-1 text-sm">
-            <div className="font-semibold">{SELLER.legalName}</div>
-            <div>AS-FISH.CZ</div>
-            <div>{SELLER.street}, {SELLER.zip} {SELLER.city}</div>
-            <div className="pt-2"><b>IČ:</b> {SELLER.icoDisplay}</div>
-            <div><b>DIČ:</b> {SELLER.dic}</div>
-          </div>
-          <h2 className="font-display text-2xl mt-10 mb-3">Bankovní spojení</h2>
-          <div className="space-y-1 text-sm">
-            <div><b>Číslo účtu:</b> {SELLER.accountNumber}, {SELLER.bank}</div>
-            <div><b>IBAN:</b> {SELLER.iban}</div>
-            <div><b>SWIFT:</b> {SELLER.swift}</div>
-          </div>
-          <p className="mt-8 text-sm text-muted-foreground">V případě jakýchkoliv dotazů k prezentovaným výrobkům nás neváhejte kontaktovat telefonicky na výše uvedeném čísle nebo e-mailem. Děkujeme.</p>
+        </header>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <section className={card} aria-labelledby="k-kontakt">
+            <h2 id="k-kontakt" className={cardTitle}>Kontakt</h2>
+            <dl className={row}>
+              <dt className={label}>Adresa</dt><dd>{SELLER.street}<br />{SELLER.zip} {SELLER.city}</dd>
+              <dt className={label}>Telefon</dt><dd><a className="text-accent" href={`tel:${tel}`}>{SELLER.phone}</a></dd>
+              <dt className={label}>E-mail</dt><dd><a className="text-accent break-all" href={`mailto:${SELLER.email}`}>{SELLER.email}</a></dd>
+            </dl>
+          </section>
+
+          <section className={card} aria-labelledby="k-doba">
+            <h2 id="k-doba" className={cardTitle}>Otevírací doba</h2>
+            <dl className={row}>
+              <dt className={label}>Po–Pá</dt><dd>9:00–17:00</dd>
+              <dt className={label}>Sobota</dt><dd>8:00–12:00</dd>
+              <dt className={label}>Neděle</dt><dd>zavřeno</dd>
+              <dt className={label}>Výdejní box</dt><dd className="text-accent font-semibold">nonstop</dd>
+            </dl>
+          </section>
+
+          <section className={card} aria-labelledby="k-firma">
+            <h2 id="k-firma" className={cardTitle}>Fakturační údaje</h2>
+            <dl className={row}>
+              <dt className={label}>Firma</dt><dd>{SELLER.legalName}<br />{SELLER.street}, {SELLER.zip} {SELLER.city}</dd>
+              <dt className={label}>IČ</dt><dd>{SELLER.icoDisplay}</dd>
+              <dt className={label}>DIČ</dt><dd>{SELLER.dic}</dd>
+              <dt className={label}>Účet</dt><dd>{SELLER.accountNumber}<br /><span className="text-muted-foreground">{SELLER.bank}</span></dd>
+              <dt className={label}>IBAN</dt><dd>{SELLER.iban.split(" ").slice(0, 3).join(" ")}<br />{SELLER.iban.split(" ").slice(3).join(" ")}</dd>
+              <dt className={label}>SWIFT</dt><dd>{SELLER.swift}</dd>
+            </dl>
+          </section>
         </div>
-        <div className="rounded-lg border bg-card p-6">
-          <h2 className="font-display text-2xl mb-3">Otevírací doba</h2>
-          <dl className="grid grid-cols-2 gap-y-1 text-sm">
-            <dt>Po–Pá</dt><dd>9:00–17:00</dd>
-            <dt>Sobota</dt><dd>8:00–12:00</dd>
-            <dt>Neděle</dt><dd>zavřeno</dd>
-            <dt>Výdejní box</dt><dd className="text-accent font-semibold">nonstop</dd>
-          </dl>
+
+        <div className="mt-10 max-w-3xl">
+          <ContactForm />
         </div>
-        <div className="md:col-span-2"><ContactForm /></div>
       </div>
     </Layout>
   );
