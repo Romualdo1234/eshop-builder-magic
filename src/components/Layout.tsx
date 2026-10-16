@@ -19,9 +19,9 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="sticky top-0 z-30 border-b border-brand-border bg-brand-surface/95 backdrop-blur text-brand-ink">
-        <div className="mx-auto max-w-6xl px-4 h-16 sm:h-20 flex items-center gap-4 sm:gap-8">
+        <div className="mx-auto max-w-6xl px-4 h-16 flex items-center gap-4 sm:gap-8">
           <Link to="/" aria-label="AS-FISH – úvodní stránka" className="flex items-center gap-3 shrink-0">
-            <img src={LOGO_SRC} alt="AS-FISH – rybářské potřeby" width={900} height={307} className="h-10 w-auto sm:h-14" />
+            <img src={LOGO_SRC} alt="AS-FISH – rybářské potřeby" width={900} height={307} className="h-10 w-auto sm:h-11" />
             <span className="hidden md:block font-display text-2xl font-bold tracking-tight">AS-FISH</span>
           </Link>
 

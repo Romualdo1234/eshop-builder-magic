@@ -130,7 +130,7 @@ function ProductPage() {
           <span className="text-foreground">{p.name}</span>
         </nav>
         <div className="mt-5 grid md:grid-cols-[45fr_55fr] gap-8 md:gap-10">
-          <ProductImage p={p} className="rounded-lg border w-full aspect-square" />
+          <ProductImage p={p} className="rounded-lg border w-full aspect-square md:aspect-auto md:h-[26rem] lg:h-[30rem]" />
           <div>
             <div className="text-sm uppercase tracking-wider text-muted-foreground">{p.brand} · SKU {p.slug.toUpperCase().slice(0, 10)}-{v.id}</div>
             <h1 className="font-display text-3xl md:text-4xl mt-1">{p.name}</h1>

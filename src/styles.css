@@ -153,6 +153,13 @@
 }
 
 @layer base {
+  /* Počítače: menší základní měřítko (vše v rem se úměrně zmenší); mobil zůstává 16 px. */
+  @media (min-width: 768px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
   * {
     border-color: var(--color-border);
   }
