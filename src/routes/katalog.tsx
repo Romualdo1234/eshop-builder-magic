@@ -50,7 +50,7 @@ function Catalog() {
       <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{label}</div>
       <div className="flex flex-wrap gap-2">
         <Chip active={!s[key]} search={(p) => ({ ...p, [key]: undefined })}>Vše</Chip>
-        {values.map((v) => <Chip key={v} active={s[key] === v} search={(p) => ({ ...p, [key]: v })}>{v}</Chip>)}
+        {values.map((v) => <Chip key={v} active={s[key] === v} search={(p) => ({ ...p, [key]: p[key] === v ? undefined : v })}>{v}</Chip>)}
       </div>
     </div>
   );
@@ -66,7 +66,7 @@ function Catalog() {
           <div className="flex flex-wrap gap-2">
             <Chip active={!!s.skladem} search={(p) => ({ ...p, skladem: p.skladem ? undefined : true })}>Jen skladem</Chip>
             <Chip active={s.razeni !== "cena"} search={(p) => ({ ...p, razeni: undefined })}>Řadit: doporučené</Chip>
-            <Chip active={s.razeni === "cena"} search={(p) => ({ ...p, razeni: "cena" })}>Řadit: cena</Chip>
+            <Chip active={s.razeni === "cena"} search={(p) => ({ ...p, razeni: p.razeni === "cena" ? undefined : "cena" })}>Řadit: cena</Chip>
           </div>
         </div>
         <div className="text-sm text-muted-foreground mb-4">{list.length} produktů</div>
