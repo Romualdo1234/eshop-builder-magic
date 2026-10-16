@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { MapPin, ShoppingBag } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
 
@@ -34,9 +34,6 @@ export function Layout({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-4 ml-auto">
-            <Button asChild variant="link" className="hidden lg:inline-flex text-brand-muted hover:text-brand-ink">
-              <Link to="/prodejna"><MapPin />Prodejna Ostrava</Link>
-            </Button>
             <Button asChild className="h-10 sm:h-11 px-4 shadow-none rounded-full">
               <Link to="/kosik"><ShoppingBag /><span>Košík</span><span className="min-w-5 text-center border-l border-primary-foreground/30 pl-2">{count}</span></Link>
             </Button>
