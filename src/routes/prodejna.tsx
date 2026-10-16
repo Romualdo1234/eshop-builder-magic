@@ -6,9 +6,9 @@ import { SELLER } from "@/lib/vop";
 export const Route = createFileRoute("/prodejna")({
   head: () => ({
     meta: [
-      { title: "Prodejna Ostrava – AS-FISH" },
+      { title: "Kontakt a prodejna Ostrava – AS-FISH" },
       { name: "description", content: "Kamenná prodejna rybářských potřeb na Nádražní v Ostravě. Otevírací doba, kontakt, nonstop box." },
-      { property: "og:title", content: "Prodejna Ostrava – AS-FISH" },
+      { property: "og:title", content: "Kontakt a prodejna Ostrava – AS-FISH" },
       { property: "og:description", content: "Osobní odběr zdarma a nonstop výdejní box." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,8 +28,8 @@ function Store() {
     <Layout>
       <div className="mx-auto max-w-6xl px-4 py-12">
         <header className="max-w-2xl">
-          <h1 className="font-display text-5xl">Prodejna Ostrava</h1>
-          <p className="mt-4 text-muted-foreground">Fyzický sklad a prodejna na Nádražní ulici. Poradíme se sestavou, vyzvednete ještě dnes.</p>
+          <h1 className="font-display text-5xl">Kontakt</h1>
+          <p className="mt-4 text-muted-foreground">Navštivte nás na Nádražní ulici v Ostravě. Poradíme se sestavou a vyzvednete ještě dnes.</p>
         </header>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
