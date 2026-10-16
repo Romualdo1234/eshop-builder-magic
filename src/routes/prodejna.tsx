@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
+import { ContactForm } from "@/components/ContactForm";
 import { SELLER } from "@/lib/vop";
 
 export const Route = createFileRoute("/prodejna")({
@@ -53,6 +54,7 @@ function Store() {
             <dt>Výdejní box</dt><dd className="text-accent font-semibold">nonstop</dd>
           </dl>
         </div>
+        <div className="md:col-span-2"><ContactForm /></div>
       </div>
     </Layout>
   );
